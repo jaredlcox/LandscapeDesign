@@ -1,10 +1,29 @@
 import React from 'react';
 import CanvassTopNavBar from './canvassTopNavBar';
+import AddBackgroundImageModalContent from './addBackgroundImageModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons' // Import the correct icons
+
 
 const LandscapeCanvass = () => {
   return (
-    <div className="bg-neutral-500 h-screen lg:w-3/5 md:w-8/12 w-full">
+    <div className="bg-neutral-500 relative overflow-hidden h-screen w-screen">
       <CanvassTopNavBar />
+      <dialog id="my_modal_2" className='modal'>
+        <div class="modal-box flex flex-col p-0 h-screen w-screen max-h-screen max-w-full rounded-none sm:rounded-lg sm:h-5/6 sm:w-5/12">
+          <form method="dialog" class="flex items-center justify-between py-2 px-4">
+            <div class="flex space-x-3 items-center">
+              <button><FontAwesomeIcon icon={faArrowLeft}/></button>
+              <p>Add Background Image</p>
+            </div>
+            {/* if there is a button in form, it will close the modal */}
+            <button class="btn btn-sm btn-circle btn-ghost text-xl">✕</button>
+          </form>
+          <div class="flex grow ">
+            <AddBackgroundImageModalContent />
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 }
