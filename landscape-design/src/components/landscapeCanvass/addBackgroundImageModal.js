@@ -16,6 +16,7 @@ const AddBackgroundImageModalContent = (props) => {
     const files = event.target.files;
     if (files.length > 0) {
       props.setSelectedImage(files[0]);
+      props.setShowLoading(true);
     }
   };
 
@@ -42,7 +43,7 @@ const AddBackgroundImageModalContent = (props) => {
                 <FontAwesomeIcon icon={faXmark} />
                 Cancel
               </button>
-              <button className="btn bg-green-500 hover:bg-green-400 text-white" onClick={() => {props.setSelectedImage(selectedImage)}}>
+              <button className="btn bg-green-500 hover:bg-green-400 text-white" onClick={() => {props.setSelectedImage(selectedImage); props.setShowLoading(true)}}>
                 <FontAwesomeIcon icon={faCheck} />
                 Use this photo
               </button>

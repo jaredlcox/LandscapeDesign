@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CanvassTopNavBar from './canvassTopNavBar';
 import AddBackgroundImageModalContent from './addBackgroundImageModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,9 +7,19 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons' // Import the co
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 3000);
+
+    // Cleanup function to clear the timeout when the component unmounts
+    return () => clearTimeout(timer);
+  }, [selectedImage]);
   
   return (
-    <div className="bg-neutral-500 relative overflow-hidden h-screen w-screen">
+    <div className="flex flex-col bg-neutral-500 relative overflow-hidden h-screen w-screen">
       <CanvassTopNavBar 
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
@@ -29,11 +39,22 @@ const LandscapeCanvass = () => {
               <AddBackgroundImageModalContent 
                 selectedImage={selectedImage} 
                 setSelectedImage={setSelectedImage}
+                setShowLoading={setShowLoading}
               />
             </div>
           </div>
         </dialog>
       )}
+      <div class="flex grow">
+        {/* Loading Indicator */}
+        {showLoading && (
+          <div class="flex flex-col grow justify-center items-center">
+          <span className="loading loading-spinner loading-lg text-blue-400"></span>
+          <p className='text-white'>Loading...</p>
+        </div>
+        )}
+        
+      </div>
     </div>
   );
 }
