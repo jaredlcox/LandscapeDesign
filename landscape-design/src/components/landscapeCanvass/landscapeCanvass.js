@@ -49,11 +49,15 @@ const LandscapeCanvass = () => {
         {/* Loading Indicator */}
         {showLoading && (
           <div class="flex flex-col grow justify-center items-center">
-          <span className="loading loading-spinner loading-lg text-blue-400"></span>
-          <p className='text-white'>Loading...</p>
+            <span className="loading loading-spinner loading-lg text-blue-400"></span>
+            <p className='text-white'>Loading...</p>
         </div>
         )}
-        
+        {!showLoading && selectedImage && (
+          <div className="flex grow flex-col items-center mt-4 justify-center">
+            <img src={selectedImage.src ? selectedImage.src : URL.createObjectURL(selectedImage)} alt="Selected Preview" className="w-full h-auto max-w-lg object-cover mt-2" />
+          </div>
+        )}
       </div>
     </div>
   );
