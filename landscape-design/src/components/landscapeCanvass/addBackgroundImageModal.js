@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faCloudArrowUp, faXmark, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-const AddBackgroundImageModalContent = () => {
+const AddBackgroundImageModalContent = (props) => {
   const fileInputRef = useRef(null);
   const dialogRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleClick = () => {
@@ -14,12 +15,13 @@ const AddBackgroundImageModalContent = () => {
   const handleFileChange = (event) => {
     const files = event.target.files;
     if (files.length > 0) {
-      console.log('Selected file:', files[0]);
+      props.setSelectedImage(files[0]);
     }
   };
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -33,9 +35,18 @@ const AddBackgroundImageModalContent = () => {
       <div className="modal-box">
         {image && (
           <>
-            <h3 className="font-bold text-lg">Image Details</h3>
+            <h3 className="font-bold text-lg">{image.alt}</h3>
             <img src={image.src} alt={image.alt} className="w-full h-auto" />
-            <p className="py-4">Description: {image.description}</p>
+            <div class="flex flex-row justify-between items-center pt-2">
+              <button className="btn bg-red-500 hover:bg-red-400 text-white" onClick={() => {setShowModal(false); props.setSelectedImage(null)}}>
+                <FontAwesomeIcon icon={faXmark} />
+                Cancel
+              </button>
+              <button className="btn bg-green-500 hover:bg-green-400 text-white" onClick={() => {props.setSelectedImage(selectedImage)}}>
+                <FontAwesomeIcon icon={faCheck} />
+                Use this photo
+              </button>
+            </div>
           </>
         )}
       </div>
@@ -116,7 +127,7 @@ const AddBackgroundImageModalContent = () => {
           ))}
         </div>
       </div>
-      <ConfirmationImageModal image={selectedImage} />
+      {showModal && (<ConfirmationImageModal image={selectedImage} />)}
     </div>
   );
 };
