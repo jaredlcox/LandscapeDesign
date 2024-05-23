@@ -38,7 +38,7 @@ const AddBackgroundImageModalContent = (props) => {
           <>
             <h3 className="font-bold text-lg">{image.alt}</h3>
             <img src={image.src} alt={image.alt} className="w-full h-auto" />
-            <div class="flex flex-row justify-between items-center pt-2">
+            <div className="flex flex-row justify-between items-center pt-2">
               <button className="btn bg-red-500 hover:bg-red-400 text-white" onClick={() => {setShowModal(false); props.setSelectedImage(null)}}>
                 <FontAwesomeIcon icon={faXmark} />
                 Cancel

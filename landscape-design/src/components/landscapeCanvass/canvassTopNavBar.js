@@ -7,11 +7,11 @@ const CanvassTopNavBar = (props) => {
     <div className="px-8 py-5 flex items-center justify-between">
       <p className="hidden md:inline-block text-white text-xl">Visual Design</p>
       <div className="ml-auto flex items-center space-x-8 md:space-x-4 lg:space-x-10">
-        <div class="dropdown sm:dropdown-bottom sm:dropdown-end">
-          <div tabindex="0" role="button" class="btn text-white text-3xl bg-transparent border-transparent hover:bg-transparent">
+        <div className="dropdown sm:dropdown-bottom sm:dropdown-end">
+          <div tabIndex="0" role="button" className="btn text-white text-3xl bg-transparent border-transparent hover:bg-transparent">
             <FontAwesomeIcon icon={faEllipsis}/>
           </div>
-          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60 mt-4 sm:mt-0">
+          <ul tabIndex="0" className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60 mt-4 sm:mt-0">
             <li>
               <button onClick={() => {
                 props.setSelectedImage(null);
@@ -23,7 +23,7 @@ const CanvassTopNavBar = (props) => {
               </button>
             </li>
             <li>
-              <button onClick={() => {props.setSelectedImage(null)}} class={`${!props.selectedImage && "hover:cursor-not-allowed"}`}>
+              <button onClick={() => {props.setSelectedImage(null)}} className={`${!props.selectedImage && "hover:cursor-not-allowed"}`}>
                 Remove Background Image
               </button>
             </li>
