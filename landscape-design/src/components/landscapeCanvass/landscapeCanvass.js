@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import CanvassTopNavBar from "./canvassTopNavBar";
 import AddBackgroundImageModalContent from "./addBackgroundImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,27 +8,59 @@ const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showLoading, setShowLoading] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [isPanning, setIsPanning] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
   const divRef = useRef(null);
 
-  const handleWheel = (e) => {
+  const handleWheel = useCallback((e) => {
     e.preventDefault();
     setZoom((prevZoom) => {
       let newZoom = e.deltaY > 0 ? prevZoom - 0.2 : prevZoom + 0.2;
       return newZoom > 0.1 ? newZoom : 0.1;
     });
-  };
+  }, []);
+
+  const handleMouseDown = useCallback((e) => {
+    setIsPanning(true);
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  }, []);
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (isPanning) {
+        e.preventDefault();
+        setOffset((prevOffset) => ({
+          x: prevOffset.x + e.clientX - mousePosition.x,
+          y: prevOffset.y + e.clientY - mousePosition.y,
+        }));
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      }
+    },
+    [isPanning, mousePosition]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsPanning(false);
+  }, []);
 
   useEffect(() => {
     const div = divRef.current;
     if (div) {
-      div.addEventListener('wheel', handleWheel, { passive: false });
+      div.addEventListener("wheel", handleWheel, { passive: false });
+      div.addEventListener("mousedown", handleMouseDown);
+      div.addEventListener("mousemove", handleMouseMove);
+      div.addEventListener("mouseup", handleMouseUp);
     }
     return () => {
       if (div) {
-        div.removeEventListener('wheel', handleWheel);
+        div.removeEventListener("wheel", handleWheel);
+        div.removeEventListener("mousedown", handleMouseDown);
+        div.removeEventListener("mousemove", handleMouseMove);
+        div.removeEventListener("mouseup", handleMouseUp);
       }
     };
-  }, []);
+  }, [handleWheel, handleMouseDown, handleMouseMove, handleMouseUp]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,7 +107,9 @@ const LandscapeCanvass = () => {
       )}
       <div
         className="flex grow"
-        style={{ transform: `scale(${zoom})` }}
+        style={{
+          transform: `scale(${zoom}) translate(${offset.x}px, ${offset.y}px)`,
+        }}
         ref={divRef}
       >
         {/* Loading Indicator */}
