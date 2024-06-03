@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CanvassTopNavBar from "./canvassTopNavBar";
 import AddBackgroundImageModalContent from "./addBackgroundImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,60 +7,99 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the c
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showLoading, setShowLoading] = useState(false);
-  const [zoom, setZoom] = useState(1);
-  const [isPanning, setIsPanning] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const divRef = useRef(null);
-
-  const handleWheel = useCallback((e) => {
-    e.preventDefault();
-    setZoom((prevZoom) => {
-      let newZoom = e.deltaY > 0 ? prevZoom - 0.2 : prevZoom + 0.2;
-      return newZoom > 0.1 ? newZoom : 0.1;
-    });
-  }, []);
-
-  const handleMouseDown = useCallback((e) => {
-    setIsPanning(true);
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  }, []);
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      if (isPanning) {
-        e.preventDefault();
-        setOffset((prevOffset) => ({
-          x: prevOffset.x + e.clientX - mousePosition.x,
-          y: prevOffset.y + e.clientY - mousePosition.y,
-        }));
-        setMousePosition({ x: e.clientX, y: e.clientY });
-      }
-    },
-    [isPanning, mousePosition]
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsPanning(false);
-  }, []);
+  const gridRef = useRef(null);
+  const contentsRef = useRef(null);
 
   useEffect(() => {
-    const div = divRef.current;
-    if (div) {
-      div.addEventListener("wheel", handleWheel, { passive: false });
-      div.addEventListener("mousedown", handleMouseDown);
-      div.addEventListener("mousemove", handleMouseMove);
-      div.addEventListener("mouseup", handleMouseUp);
+    if (!gridRef.current || !contentsRef.current) {
+      return;
     }
-    return () => {
-      if (div) {
-        div.removeEventListener("wheel", handleWheel);
-        div.removeEventListener("mousedown", handleMouseDown);
-        div.removeEventListener("mousemove", handleMouseMove);
-        div.removeEventListener("mouseup", handleMouseUp);
-      }
+
+    const grid = gridRef.current;
+    const contents = contentsRef.current;
+    const gridSize = grid.getBoundingClientRect();
+
+    let panningAllowed = false;
+    let zoomFactor = 1;
+
+    const translate = { scale: zoomFactor, translateX: 0, translateY: 0 };
+    const initialContentsPos = { x: 0, y: 0 };
+    const pinnedMousePosition = { x: 0, y: 0 };
+    const mousePosition = { x: 0, y: 0 };
+
+    const mousedown = (event) => {
+      initialContentsPos.x = translate.translateX;
+      initialContentsPos.y = translate.translateY;
+      pinnedMousePosition.x = event.clientX;
+      pinnedMousePosition.y = event.clientY;
+      panningAllowed = true;
     };
-  }, [handleWheel, handleMouseDown, handleMouseMove, handleMouseUp]);
+
+    const mousemove = (event) => {
+      mousePosition.x = event.clientX;
+      mousePosition.y = event.clientY;
+      if (panningAllowed) {
+        const diffX = mousePosition.x - pinnedMousePosition.x;
+        const diffY = mousePosition.y - pinnedMousePosition.y;
+        translate.translateX = initialContentsPos.x + diffX;
+        translate.translateY = initialContentsPos.y + diffY;
+      }
+      update();
+    };
+
+    const mouseup = (event) => {
+      panningAllowed = false;
+    };
+
+    const zoom = (event) => {
+      const zoomSpeed = 500; // Decrease this value to make zoom faster
+      const newZoomFactor = zoomFactor - event.deltaY / zoomSpeed;
+
+      if (newZoomFactor < 0.4) {
+        // Only check for minimum zoom level
+        return;
+      }
+
+      const oldZoomFactor = zoomFactor;
+      zoomFactor = newZoomFactor;
+
+      mousePosition.x = event.clientX - gridSize.x;
+      mousePosition.y = event.clientY - gridSize.y;
+
+      // Calculations
+      translate.scale = zoomFactor;
+
+      const contentMousePosX = mousePosition.x - translate.translateX;
+      const contentMousePosY = mousePosition.y - translate.translateY;
+      const x =
+        mousePosition.x - contentMousePosX * (zoomFactor / oldZoomFactor);
+      const y =
+        mousePosition.y - contentMousePosY * (zoomFactor / oldZoomFactor);
+
+      translate.translateX = x;
+      translate.translateY = y;
+
+      update();
+    };
+
+    const update = () => {
+      const matrix = `matrix(${translate.scale},0,0,${translate.scale},${translate.translateX},${translate.translateY})`;
+      contents.style.transform = matrix;
+    };
+
+    // addStuffToContents();
+    grid.addEventListener("wheel", zoom);
+    grid.addEventListener("mousedown", mousedown);
+    grid.addEventListener("mousemove", mousemove);
+    grid.addEventListener("mouseup", mouseup);
+
+    return () => {
+      grid.removeEventListener("wheel", zoom);
+      grid.removeEventListener("mousedown", mousedown);
+      grid.removeEventListener("mousemove", mousemove);
+      grid.removeEventListener("mouseup", mouseup);
+    };
+  }, [showLoading]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -106,21 +145,22 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className="flex grow"
-        style={{
-          transform: `scale(${zoom}) translate(${offset.x}px, ${offset.y}px)`,
-        }}
-        ref={divRef}
+        className="flex flex-grow overflow-hidden relative bg-neutral-500 w-full h-full"
+        ref={gridRef}
       >
         {/* Loading Indicator */}
         {showLoading && (
-          <div className="flex flex-col grow justify-center items-center">
+          <div className="flex flex-col justify-center items-center h-full w-full">
             <span className="loading loading-spinner loading-lg text-blue-400"></span>
             <p className="text-white">Loading...</p>
           </div>
         )}
         {!showLoading && selectedImage && (
-          <div className="flex grow flex-col items-center mt-4 justify-center">
+          <div
+            className="absolute mx-auto my-auto w-full h-full overflow-hidden"
+            style={{ transformOrigin: "0 0" }}
+            ref={contentsRef}
+          >
             <img
               src={
                 selectedImage.src
@@ -128,7 +168,8 @@ const LandscapeCanvass = () => {
                   : URL.createObjectURL(selectedImage)
               }
               alt="Selected Preview"
-              className="w-full h-auto max-w-lg object-cover mt-2"
+              className="w-full h-auto max-w-lg object-cover mx-auto mt-48 mb-48"
+              style={{ pointerEvents: "none" }}
             />
           </div>
         )}
