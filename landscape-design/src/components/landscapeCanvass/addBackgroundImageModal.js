@@ -89,11 +89,11 @@ const AddBackgroundImageModalContent = (props) => {
       <div className="flex-1 flex flex-col items-center justify-center p-4">
         <p className="text-center max-w-72">Add a picture of the area you want to design or choose from our image library below</p>
         <div className="flex flex-col items-center mt-12 cursor-pointer group" onClick={handleClick}>
-          <button className="btn sm:h-32 sm:w-32 sm:rounded-full bg-blue-400 group-hover:bg-blue-800">
+          <button className="btn sm:h-32 sm:w-32 sm:rounded-full bg-gradient-to-r from-emerald-400 to-emerald-300">
             <FontAwesomeIcon icon={faCloudArrowUp} className="text-3xl text-white" />
             <span className="inline-block sm:hidden text-white">Upload Photo</span>
           </button>
-          <span className="hidden sm:inline-block text-blue-400 group-hover:text-blue-800">Upload Photo</span>
+          <span className="hidden sm:inline-block text-emerald-400 group-hover:text-emerald-800">Upload Photo</span>
           <input
             type="file"
             ref={fileInputRef}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import CanvassTopNavBar from "./canvassTopNavBar";
+import ImagePrompt from "./imagePrompt";
 import AddBackgroundImageModalContent from "./addBackgroundImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the correct icons
@@ -7,6 +8,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the c
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showLoading, setShowLoading] = useState(false);
+  const [generatedDesign, setGeneratedDesign] = useState(null);
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 
@@ -111,7 +113,7 @@ const LandscapeCanvass = () => {
   }, [selectedImage]);
 
   return (
-    <div className="flex flex-col bg-neutral-500 relative overflow-hidden h-screen w-screen">
+    <div className="flex flex-col relative overflow-hidden h-screen w-screen">
       <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
@@ -145,14 +147,14 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className="flex flex-grow overflow-hidden relative bg-neutral-500 w-full h-full"
+        className="flex flex-grow overflow-hidden relative w-full min-h-full"
         ref={gridRef}
       >
         {/* Loading Indicator */}
         {showLoading && (
           <div className="flex flex-col justify-center items-center h-full w-full">
-            <span className="loading loading-spinner loading-lg text-blue-400"></span>
-            <p className="text-white">Loading...</p>
+            <span className="loading loading-spinner loading-lg text-emerald-400"></span>
+            <p className="text-emerald-400">Loading...</p>
           </div>
         )}
         {!showLoading && selectedImage && (
@@ -174,6 +176,13 @@ const LandscapeCanvass = () => {
           </div>
         )}
       </div>
+      <ImagePrompt
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+        showLoading={showLoading}
+        generatedDesign={generatedDesign}
+        setGeneratedDesign={setGeneratedDesign}
+      />
     </div>
   );
 };
