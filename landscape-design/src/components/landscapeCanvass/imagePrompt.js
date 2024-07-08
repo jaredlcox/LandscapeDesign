@@ -22,21 +22,11 @@ const ImagePrompt = (props) => {
     { "DT-EXT-007": "Lush Green Lawn" },
     { "DT-EXT-008": "Mediterranean Garden Landscaping" },
     { "DT-EXT-009": "Moss Garden" },
-    { "DT-EXT-010": "Outdoor Dining and Sitting Area" },
-    {
-      "DT-EXT-011":
-        "Party-Ready Outdoor Space with Pool, Spa, and Fire Feature",
-    },
-    { "DT-EXT-012": "Resort-Style Landscaping and Pool" },
-    { "DT-EXT-013": "Round Swimming Pool With Lawn and Pool House" },
   ];
 
   const exterior_spaces = [
     { "ST-EXT-001": "Backyard" },
     { "ST-EXT-002": "Garden/Landscaping" },
-    { "ST-EXT-003": "Outdoor Living" },
-    { "ST-EXT-004": "Poolside" },
-    { "ST-EXT-005": "Deck/Patio" },
   ];
 
   const generateDesign = (imageUrl) => {
@@ -140,16 +130,6 @@ const ImagePrompt = (props) => {
                   <option>Shrubs with purple flowers</option>
                   <option>Snapdragon</option>
                   <option>Flowering perennials</option>
-                  <option>No Pathway</option>
-                  <option>A Neutral stone pathway</option>
-                  <option>Brick Walkway</option>
-                  <option>Concrete Pathway</option>
-                  <option>Contemporary Pathway</option>
-                  <option>Dynamic Pavers Pathway</option>
-                  <option>Flagstone Walkway</option>
-                  <option>Herringbone Pathway</option>
-                  <option>Pea Gravel Pathway</option>
-                  <option>Stone Pathway</option>
                 </select>
               </li>
             </ul>
