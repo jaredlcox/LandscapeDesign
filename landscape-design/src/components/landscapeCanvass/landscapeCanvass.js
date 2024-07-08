@@ -4,6 +4,7 @@ import ImagePrompt from "./imagePrompt";
 import AddBackgroundImageModalContent from "./addBackgroundImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the correct icons
+import LandingPage from "./landingPage";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -186,6 +187,7 @@ const LandscapeCanvass = () => {
           opacity={0.8}
           zIndex={1}
         />
+        <LandingPage />
         {/* Loading Indicator */}
         {showLoading && (
           <div className="flex flex-col justify-center items-center h-full w-full">
