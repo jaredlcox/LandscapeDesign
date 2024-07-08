@@ -112,6 +112,33 @@ const LandscapeCanvass = () => {
     return () => clearTimeout(timer);
   }, [selectedImage]);
 
+  const Circle = ({
+    size = 400,
+    color = "#568EA3",
+    top = -200,
+    left = -200,
+    opacity = 0.5,
+    zIndex = 2,
+  }) => {
+    // Define styles for the circle
+    const styles = {
+      width: `${size}px`,
+      height: `${size}px`,
+      backgroundColor: color, // Ensure `color` is a valid CSS color value
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: "50%",
+      position: "absolute",
+      top: top,
+      left: left,
+      opacity: opacity,
+      zIndex: zIndex,
+    };
+
+    return <div style={styles}></div>;
+  };
+
   return (
     <div className="flex flex-col relative overflow-hidden h-screen w-screen">
       <CanvassTopNavBar
@@ -147,9 +174,18 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className="flex flex-grow overflow-hidden relative w-full min-h-full"
+        className="flex flex-grow overflow-hidden relative w-full min-h-full bg-gradient-to-r from-teal-50 to-teal-100"
         ref={gridRef}
       >
+        <Circle />
+        <Circle
+          size="400"
+          color="#CEFCF2"
+          top={-30}
+          left={50}
+          opacity={0.8}
+          zIndex={1}
+        />
         {/* Loading Indicator */}
         {showLoading && (
           <div className="flex flex-col justify-center items-center h-full w-full">
