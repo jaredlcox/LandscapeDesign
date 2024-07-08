@@ -60,7 +60,7 @@ const ImagePrompt = (props) => {
               landscapingPreference,
               additionalPrompt
             ).then((data) => {
-                let imageId = data.data.job_id;
+              let imageId = data.data.job_id;
               getImage(imageId).then((imageData) => {
                 props.setGeneratedDesign(imageData.data.generated_image[0]);
               });
@@ -160,7 +160,20 @@ const ImagePrompt = (props) => {
               landscaping features as per inputs chosen.
             </div>
             <button
-              className="btn w-full bg-gradient-to-r from-emerald-300 to-teal-500 text-white tracking-wide text-base"
+              disabled={() => {
+                return (
+                  spaceType === null ||
+                  designTheme === null ||
+                  landscapingPreference === null
+                );
+              }}
+              className={`${
+                spaceType === null ||
+                designTheme === null ||
+                landscapingPreference === null
+                  ? "cursor-not-allowed"
+                  : "cursor-pointer"
+              } btn w-full bg-gradient-to-r from-emerald-300 to-teal-500 text-white tracking-wide text-base`}
               onClick={() => {
                 generateDesign(props.selectedImage.src);
               }}
