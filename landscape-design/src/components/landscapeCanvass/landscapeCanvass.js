@@ -175,19 +175,28 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className="flex flex-grow overflow-hidden relative w-full min-h-full bg-gradient-to-r from-teal-50 to-teal-100"
+        className={`flex flex-grow overflow-hidden relative w-full min-h-full ${
+          selectedImage
+            ? "bg-white"
+            : "bg-gradient-to-r from-teal-50 to-teal-100"
+        }`}
         ref={gridRef}
       >
-        <Circle />
-        <Circle
-          size="400"
-          color="#CEFCF2"
-          top={-30}
-          left={50}
-          opacity={0.8}
-          zIndex={1}
-        />
-        <LandingPage />
+        {!selectedImage && (
+          <>
+            <Circle />
+            <Circle
+              size="400"
+              color="#CEFCF2"
+              top={-30}
+              left={50}
+              opacity={0.8}
+              zIndex={1}
+            />
+            <LandingPage />
+          </>
+        )}
+
         {/* Loading Indicator */}
         {showLoading && (
           <div className="flex flex-col justify-center items-center h-full w-full">
