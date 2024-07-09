@@ -68,7 +68,7 @@ const CanvassTopNavBar = (props) => {
         {!props.selectedImage && (
           <>
             <button
-              className="btn btn-md bg-gradient-to-r from-emerald-400 to-emerald-300 text-white md:btn-md hidden md:flex hover:bg-black"
+              className="btn btn-md bg-gradient-to-r from-emerald-400 to-teal-300 text-white md:btn-md hidden md:flex hover:bg-black"
               onClick={() => {
                 document.getElementById("my_modal_2").showModal();
               }}
