@@ -19,48 +19,51 @@ const CanvassTopNavBar = (props) => {
       </div>
 
       <div className="ml-auto flex items-center space-x-8 md:space-x-4 lg:space-x-10">
+        {props.selectedImage && (
         <div className="dropdown sm:dropdown-bottom sm:dropdown-end">
-          <div
-            tabIndex="0"
-            role="button"
-            className="btn text-emerald-400 text-3xl bg-transparent border-transparent hover:border-transparent hover:bg-transparent"
-          >
-            <FontAwesomeIcon icon={faEllipsis} />
-          </div>
-          <ul
-            tabIndex="0"
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60 mt-4 sm:mt-0"
-          >
-            <li>
-              <button
-                onClick={() => {
-                  props.setSelectedImage(null);
-                  setTimeout(() => {
-                    document.getElementById("my_modal_2").showModal();
-                  }, 100);
-                }}
-              >
-                Change Background Image
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => {
-                  props.setSelectedImage(null);
-                }}
-                className={`${
-                  !props.selectedImage && "hover:cursor-not-allowed"
-                }`}
-              >
-                Remove Background Image
-              </button>
-            </li>
-          </ul>
+        <div
+          tabIndex="0"
+          role="button"
+          className="btn text-emerald-400 text-3xl bg-transparent border-transparent hover:border-transparent hover:bg-transparent"
+        >
+          <FontAwesomeIcon icon={faEllipsis} />
         </div>
-        <FontAwesomeIcon
+        <ul
+          tabIndex="0"
+          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60 mt-4 sm:mt-0"
+        >
+          <li>
+            <button
+              onClick={() => {
+                props.setSelectedImage(null);
+                setTimeout(() => {
+                  document.getElementById("my_modal_2").showModal();
+                }, 100);
+              }}
+            >
+              Change Background Image
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => {
+                props.setSelectedImage(null);
+              }}
+              className={`${
+                !props.selectedImage && "hover:cursor-not-allowed"
+              }`}
+            >
+              Remove Background Image
+            </button>
+          </li>
+        </ul>
+      </div>
+
+        )}
+        {/* <FontAwesomeIcon
           icon={faArrowUpFromBracket}
           className="text-emerald-400 text-2xl cursor-pointer"
-        />
+        /> */}
         {!props.selectedImage && (
           <>
             <button
@@ -80,10 +83,10 @@ const CanvassTopNavBar = (props) => {
             </button>
           </>
         )}
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           icon={faXmark}
           className="text-emerald-400 text-2xl cursor-pointer"
-        />
+        /> */}
       </div>
     </div>
   );
