@@ -8,6 +8,7 @@ import LandingPage from "./landingPage";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [changingImage, setChangingImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [generatedDesign, setGeneratedDesign] = useState(null);
   const gridRef = useRef(null);
@@ -145,6 +146,7 @@ const LandscapeCanvass = () => {
       <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
+        setChangingImage={setChangingImage}
       />
       {!selectedImage && (
         <dialog id="my_modal_2" className="modal">
@@ -176,13 +178,13 @@ const LandscapeCanvass = () => {
       )}
       <div
         className={`flex flex-grow overflow-hidden relative w-full min-h-full ${
-          selectedImage
+          selectedImage || changingImage
             ? "bg-white"
             : "bg-gradient-to-r from-teal-50 to-teal-100"
         }`}
         ref={gridRef}
       >
-        {!selectedImage && (
+        {!selectedImage && !changingImage && (
           <>
             <Circle />
             <Circle
