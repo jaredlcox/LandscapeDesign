@@ -11,6 +11,7 @@ const ImagePrompt = (props) => {
   const [designTheme, setDesignTheme] = useState(null);
   const [landscapingPreference, setLandscapingPreference] = useState(null);
   const [additionalPrompt, setAdditionalPrompt] = useState("");
+  const [isGenerated, setIsGenerated] = useState(false);
 
   const exterior_themes = [
     { "DT-EXT-001": "Beautiful garden" },
@@ -63,6 +64,15 @@ const ImagePrompt = (props) => {
       };
       getMaskUntilDone(maskId);
     });
+  };
+
+  const handleClick = () => {
+    // this will be the function that first checks for a generated mask in a database
+    if (!isGenerated) {
+      console.log("test");
+      generateDesign(props.selectedImage.src);
+      setIsGenerated(true); // Prevent further calls until reset
+    }
   };
 
   return (
@@ -132,6 +142,14 @@ const ImagePrompt = (props) => {
                   <option>Flowering perennials</option>
                 </select>
               </li>
+              <li>
+                <input
+                  type="text"
+                  placeholder="Additional Preferences"
+                  className="input input-bordered w-full max-w-xs"
+                  onChange={(e) => setAdditionalPrompt(e.target.value)}
+                />
+              </li>
             </ul>
           </div>
           <div className="flex flex-col mb-[110px]">
@@ -140,13 +158,6 @@ const ImagePrompt = (props) => {
               landscaping features as per inputs chosen.
             </div>
             <button
-              disabled={() => {
-                return (
-                  spaceType === null ||
-                  designTheme === null ||
-                  landscapingPreference === null
-                );
-              }}
               className={`${
                 spaceType === null ||
                 designTheme === null ||
@@ -154,9 +165,7 @@ const ImagePrompt = (props) => {
                   ? "cursor-not-allowed"
                   : "cursor-pointer"
               } btn w-full bg-gradient-to-r from-emerald-300 to-teal-500 text-white tracking-wide text-base`}
-              onClick={() => {
-                generateDesign(props.selectedImage.src);
-              }}
+              onClick={handleClick}
             >
               Generate Design
             </button>
