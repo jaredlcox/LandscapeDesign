@@ -83,8 +83,9 @@ const ImagePrompt = (props) => {
         className="drawer-toggle"
         checked={props.selectedImage !== null && !props.showLoading}
       />
-      <div className="drawer-side mt-[90px] flex flex-col justify-between">
-        <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content flex flex-col justify-between">
+      <div className="drawer-side mt-[90px] flex flex-col justify-between ">
+        <div className="menu p-4 min-h-full text-base-content flex flex-col justify-between w-auto md:w-80 items-center bg-base-200">
+          {/* dropdowns */}
           <div>
             <div className="text-center p-2 bg-cyan-50 rounded text-slate-700 font-medium text-lg tracking-wide">
               <FontAwesomeIcon icon={faSeedling} className="mr-2 text-base" />
@@ -152,6 +153,7 @@ const ImagePrompt = (props) => {
               </li>
             </ul>
           </div>
+          {/* description and button */}
           <div className="flex flex-col mb-[110px]">
             <div className="p-2 bg-cyan-50 rounded text-gray-800 mb-4 text-">
               Outdoor area identified by AI will be redesigned with suitable

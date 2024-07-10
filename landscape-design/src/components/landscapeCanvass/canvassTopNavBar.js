@@ -9,7 +9,7 @@ import {
 
 const CanvassTopNavBar = (props) => {
   return (
-    <div className="px-8 py-5 flex items-center justify-between border-b-4 border-neutral-100 w-full">
+    <div className="px-8 py-5 flex items-center justify-between border-b-4 border-neutral-100 w-full z-50">
       <div className="flex md:flex-row text-neutral-600 text-xl font-medium">
         <p>Visu</p>
         <p className="text-emerald-400 text-xl font-bold">a</p>
@@ -20,7 +20,7 @@ const CanvassTopNavBar = (props) => {
 
       <div className="ml-auto flex items-center space-x-8 md:space-x-4 lg:space-x-10">
         {props.selectedImage && (
-          <div className="dropdown sm:dropdown-bottom sm:dropdown-end">
+          <div className="dropdown dropdown-bottom dropdown-end">
             <div
               tabIndex="0"
               role="button"

@@ -142,7 +142,7 @@ const LandscapeCanvass = () => {
   };
 
   return (
-    <div className="flex flex-col relative h-screen w-screen">
+    <div className={`flex flex-col relative h-screen w-screen ${(showLoading || selectedImage) && 'overflow-hidden'}`}>
       <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
@@ -177,14 +177,14 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className={`flex flex-grow relative overflow-auto ${
+        className={`flex flex-grow relative ${!selectedImage && 'overflow-auto'} ${
           selectedImage || changingImage
             ? "bg-white"
             : "bg-gradient-to-r from-teal-50 to-teal-100"
         }`}
         ref={gridRef}
       >
-        {!selectedImage && !changingImage && (
+        {!selectedImage && !changingImage && !showLoading && (
           <>
             <Circle />
             <Circle
@@ -208,7 +208,7 @@ const LandscapeCanvass = () => {
         )}
         {!showLoading && selectedImage && (
           <div
-            className="absolute mx-auto my-auto w-full h-full overflow-hidden"
+            className="mx-auto my-auto w-full h-screen sm:ml-[20rem] -mt-[55px]"
             style={{ transformOrigin: "0 0" }}
             ref={contentsRef}
           >
@@ -225,7 +225,7 @@ const LandscapeCanvass = () => {
           </div>
         )}
       </div>
-      {selectedImage && (
+      {selectedImage && !showLoading && (
         <ImagePrompt
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
