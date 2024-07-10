@@ -9,8 +9,8 @@ import {
 
 const CanvassTopNavBar = (props) => {
   return (
-    <div className="px-8 py-5 flex items-center justify-between border-b-4 border-neutral-100">
-      <div className="hidden md:flex md:flex-row text-neutral-600 text-xl font-medium">
+    <div className="px-8 py-5 flex items-center justify-between border-b-4 border-neutral-100 w-full">
+      <div className="flex md:flex-row text-neutral-600 text-xl font-medium">
         <p>Visu</p>
         <p className="text-emerald-400 text-xl font-bold">a</p>
         <p>l Des</p>

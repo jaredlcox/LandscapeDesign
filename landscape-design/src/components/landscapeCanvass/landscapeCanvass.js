@@ -127,22 +127,22 @@ const LandscapeCanvass = () => {
       width: `${size}px`,
       height: `${size}px`,
       backgroundColor: color, // Ensure `color` is a valid CSS color value
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      borderRadius: "50%",
-      position: "absolute",
       top: top,
       left: left,
       opacity: opacity,
       zIndex: zIndex,
     };
 
-    return <div style={styles}></div>;
+    return (
+      <div
+        className="hidden md:flex rounded-full absolute"
+        style={styles}
+      ></div>
+    );
   };
 
   return (
-    <div className="flex flex-col relative overflow-hidden h-screen w-screen">
+    <div className="flex flex-col relative h-screen w-screen">
       <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
@@ -177,7 +177,7 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className={`flex flex-grow overflow-hidden relative w-full min-h-full ${
+        className={`flex flex-grow relative overflow-auto ${
           selectedImage || changingImage
             ? "bg-white"
             : "bg-gradient-to-r from-teal-50 to-teal-100"
@@ -225,13 +225,15 @@ const LandscapeCanvass = () => {
           </div>
         )}
       </div>
-      <ImagePrompt
-        selectedImage={selectedImage}
-        setSelectedImage={setSelectedImage}
-        showLoading={showLoading}
-        generatedDesign={generatedDesign}
-        setGeneratedDesign={setGeneratedDesign}
-      />
+      {selectedImage && (
+        <ImagePrompt
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+          showLoading={showLoading}
+          generatedDesign={generatedDesign}
+          setGeneratedDesign={setGeneratedDesign}
+        />
+      )}
     </div>
   );
 };
