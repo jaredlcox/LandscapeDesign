@@ -2,7 +2,7 @@ function generateImage(maskUrlArray, imageUrl, spaceType, designTheme, landscapi
     const url = 'https://api.reimaginehome.ai/v1/generate_image';
     const headers = {
       'Content-Type': 'application/json',
-      'api-key': '65394b877bf27b356047e693'
+      'api-key': '668f34ce9b303a613cea8fbf'
     };
     const body = {
       image_url: imageUrl,
@@ -18,7 +18,7 @@ function generateImage(maskUrlArray, imageUrl, spaceType, designTheme, landscapi
       additional_prompt: additionalPrompt,
       webhook_url: ""
     };
-  
+
     return fetch(url, { method: 'POST', headers: headers, body: JSON.stringify(body) })
       .then(response => {
         if (!response.ok) {

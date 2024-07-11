@@ -37,6 +37,7 @@ const CanvassTopNavBar = (props) => {
                   onClick={() => {
                     props.setSelectedImage(null);
                     props.setChangingImage(true);
+                    props.setGeneratedDesign(null);
                     setTimeout(() => {
                       document.getElementById("my_modal_2").showModal();
                     }, 100);
@@ -48,6 +49,7 @@ const CanvassTopNavBar = (props) => {
               <li>
                 <button
                   onClick={() => {
+                    props.setGeneratedDesign(null);
                     props.setSelectedImage(null);
                     props.setChangingImage(false);
                   }}

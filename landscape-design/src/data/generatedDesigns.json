@@ -1,0 +1,116 @@
+{
+  "white_house": [
+    {
+      "status": "success",
+      "label": "white and red flowers",
+      "data": {
+        "job_id": "668fe023bcfaa8e97a0080b9",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/b1ff4639-68b5-4cb6-8e81-3ceeaa3a45ed.png"
+        ]
+      }
+    },
+    {
+      "status": "success",
+      "label": "purple and yellow flowers",
+      "data": {
+        "job_id": "668fe1cfbcfaa8e97a008122",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/63007d8b-4f42-4dea-a7d0-f4f95a3b1696.png"
+        ]
+      }
+    },
+    {
+      "status": "success",
+      "label": "bright pink and purple flowers",
+      "data": {
+        "job_id": "668fe2bfbcfaa8e97a00815f",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png"
+        ]
+      }
+    },
+    {
+      "status": "success",
+      "label": "yellow blue and orange flowers",
+      "data": {
+        "job_id": "668fe7e18d94a1fdf30553fd",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/c9f91ea9-664d-4ec1-85ca-ba2e58e6d184.png"
+        ]
+      }
+    },
+    {
+      "status": "success",
+      "label": "green boxwoods, red roses, white hydrangeas",
+      "data": {
+        "job_id": "668fe969816bb59b5ebfd2da",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/a3c3038e-237c-4cb7-8c59-89c85a6cc617.png"
+        ]
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "job_id": "668fec7e8d94a1fdf305558f",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/6fd62a30-1b15-47f4-b558-f18bf007484d.png"
+        ]
+      }
+    },
+    {
+        "status": "success",
+        "label": "red and yellow flowers moss garden",
+        "data": {
+            "job_id": "668fed578d94a1fdf30555bb",
+            "job_status": "done",
+            "generated_images": [
+                "https://cdn.reimaginehome.ai/prod/gen/a9379ca0-0342-4f0c-8659-c588e4e276d2.png"
+            ]
+        }
+    }
+  ],
+  "blue_house": [
+    {
+      "status": "success",
+      "data": {
+        "job_id": "668fea4e8d94a1fdf30554ad",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/39cd612b-e3d9-49da-915f-a17b7ec08943.png"
+        ]
+      }
+    }
+  ],
+  "brown_house": [
+    {
+      "status": "success",
+      "data": {
+        "job_id": "668fe023bcfaa8e97a0080b9",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/b1ff4639-68b5-4cb6-8e81-3ceeaa3a45ed.png"
+        ]
+      }
+    }
+  ],
+  "gray_house": [
+    {
+      "status": "success",
+      "data": {
+        "job_id": "668fe023bcfaa8e97a0080b9",
+        "job_status": "done",
+        "generated_images": [
+          "https://cdn.reimaginehome.ai/prod/gen/b1ff4639-68b5-4cb6-8e81-3ceeaa3a45ed.png"
+        ]
+      }
+    }
+  ]
+}

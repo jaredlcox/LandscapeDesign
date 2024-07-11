@@ -17,18 +17,13 @@ const ImagePrompt = (props) => {
     { "DT-EXT-001": "Beautiful garden" },
     { "DT-EXT-002": "Charming Playhouse Garden Landscaping" },
     { "DT-EXT-003": "Cottage Garden's Colorful Planting Palette" },
-    { "DT-EXT-004": "Cozy Corner With Fire Pit and seating" },
     { "DT-EXT-005": "Garden Landscaping with Gravel Landscaping" },
     { "DT-EXT-006": "Hip California Garden Landscaping" },
-    { "DT-EXT-007": "Lush Green Lawn" },
     { "DT-EXT-008": "Mediterranean Garden Landscaping" },
     { "DT-EXT-009": "Moss Garden" },
   ];
 
-  const exterior_spaces = [
-    { "ST-EXT-001": "Backyard" },
-    { "ST-EXT-002": "Garden/Landscaping" },
-  ];
+  const exterior_spaces = [{ "ST-EXT-002": "Garden/Landscaping" }];
 
   const generateDesign = (imageUrl) => {
     const params = "?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
@@ -40,9 +35,9 @@ const ImagePrompt = (props) => {
       const getMaskUntilDone = (maskId) => {
         getMask(maskId).then((maskData) => {
           if (maskData.data.job_status === "done") {
-            let masksUrlArray = maskData.data.masks.map((mask) => {
-              return mask.url;
-            });
+            let masksUrlArray = maskData.data.masks
+              .filter((mask) => mask.name === "earth" || mask.name === "plant")
+              .map((mask) => mask.url);
             generateImage(
               masksUrlArray,
               imageUrl,
@@ -52,9 +47,8 @@ const ImagePrompt = (props) => {
               additionalPrompt
             ).then((data) => {
               let imageId = data.data.job_id;
-              getImage(imageId).then((imageData) => {
-                props.setGeneratedDesign(imageData.data.generated_image[0]);
-              });
+              // Call getImageUntilDone instead of getImage directly
+              getImageUntilDone(imageId);
             });
           } else {
             // If job_status is not "done", wait half a second and then try again
@@ -65,11 +59,22 @@ const ImagePrompt = (props) => {
       getMaskUntilDone(maskId);
     });
   };
+  
+  // Define getImageUntilDone function
+  const getImageUntilDone = (imageId) => {
+    getImage(imageId).then((imageData) => {
+      if (imageData.data.job_status === "done") {
+        props.setGeneratedDesign(imageData.data.generated_images[0]);
+      } else {
+        // If job_status is not "done", wait half a second and then try again
+        setTimeout(() => getImageUntilDone(imageId), 500);
+      }
+    });
+  };
 
   const handleClick = () => {
     // this will be the function that first checks for a generated mask in a database
     if (!isGenerated) {
-      console.log("test");
       generateDesign(props.selectedImage.src);
       setIsGenerated(true); // Prevent further calls until reset
     }

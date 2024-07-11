@@ -5,12 +5,15 @@ import AddBackgroundImageModalContent from "./addBackgroundImageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the correct icons
 import LandingPage from "./landingPage";
+import ImageSlider from "./imageSlider";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [changingImage, setChangingImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [generatedDesign, setGeneratedDesign] = useState(null);
+  const [confirm, setConfirm] = useState(false);
+  const [regenerate, setRegenerate] = useState(false);
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 
@@ -146,6 +149,7 @@ const LandscapeCanvass = () => {
       className={`flex flex-col relative h-screen w-screen ${
         (showLoading || selectedImage) && "overflow-hidden"
       }`}
+      style={{ scrollbarWidth: "none" }}
     >
       <CanvassTopNavBar
         selectedImage={selectedImage}
@@ -180,64 +184,77 @@ const LandscapeCanvass = () => {
           </div>
         </dialog>
       )}
-      <div
-        className={`flex flex-grow relative ${
-          !selectedImage && "overflow-auto"
-        } ${
-          selectedImage || changingImage
-            ? "bg-white"
-            : "bg-gradient-to-r from-teal-50 to-teal-100"
-        }`}
-        ref={gridRef}
-      >
-        {!selectedImage && !changingImage && !showLoading && (
-          <>
-            <Circle />
-            <Circle
-              size="400"
-              color="#CEFCF2"
-              top={-30}
-              left={50}
-              opacity={0.8}
-              zIndex={1}
-            />
-            <LandingPage />
-          </>
-        )}
+      {!generatedDesign && (
+        <div
+          className={`flex flex-grow relative ${
+            !selectedImage && "overflow-auto"
+          } ${
+            selectedImage || changingImage
+              ? "bg-white"
+              : "bg-gradient-to-r from-teal-50 to-teal-100"
+          }`}
+          ref={gridRef}
+        >
+          {!selectedImage && !changingImage && !showLoading && (
+            <>
+              <Circle />
+              <Circle
+                size="400"
+                color="#CEFCF2"
+                top={-30}
+                left={50}
+                opacity={0.8}
+                zIndex={1}
+              />
+              <LandingPage />
+            </>
+          )}
 
-        {/* Loading Indicator */}
-        {showLoading && (
-          <div className="flex justify-center items-center h-full w-full animate-pulse bg-slate-50">
+          {/* Loading Indicator */}
+          {showLoading && (
+            <div className="flex justify-center items-center h-full w-full animate-pulse bg-slate-50">
               <p className="text-emerald-400 text-xl">Loading</p>
               <span className="loading loading-dots loading-md text-emerald-400 ml-1 mt-2"></span>
-          </div>
-        )}
-        {!showLoading && selectedImage && (
-          <div
-            className="mx-auto my-auto w-full h-screen sm:ml-[20rem] -mt-[55px]"
-            style={{ transformOrigin: "0 0" }}
-            ref={contentsRef}
-          >
-            <img
-              src={
-                selectedImage.src
-                  ? selectedImage.src
-                  : URL.createObjectURL(selectedImage)
-              }
-              alt="Selected Preview"
-              className="w-full h-auto max-w-lg object-cover mx-auto mt-48 mb-48"
-              style={{ pointerEvents: "none" }}
-            />
-          </div>
-        )}
-      </div>
-      {selectedImage && !showLoading && (
+            </div>
+          )}
+          {!showLoading && selectedImage && (
+            <div
+              className="mx-auto my-auto w-full h-screen sm:ml-[20rem] -mt-[55px]"
+              style={{ transformOrigin: "0 0" }}
+              ref={contentsRef}
+            >
+              <img
+                src={
+                  selectedImage.src
+                    ? selectedImage.src
+                    : URL.createObjectURL(selectedImage)
+                }
+                alt="Selected Preview"
+                className="w-full h-auto max-w-lg object-cover mx-auto mt-48 mb-48"
+                style={{ pointerEvents: "none" }}
+              />
+            </div>
+          )}
+        </div>
+      )}
+      {selectedImage && !showLoading && !generatedDesign && (
         <ImagePrompt
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
           showLoading={showLoading}
+          setShowLoading={setShowLoading}
           generatedDesign={generatedDesign}
           setGeneratedDesign={setGeneratedDesign}
+        />
+      )}
+      {selectedImage && generatedDesign && (
+        <ImageSlider
+          selectedImage={selectedImage}
+          generatedDesign={generatedDesign}
+          confirm={confirm}
+          setConfirm={setConfirm}
+          regenerate={regenerate}
+          setRegenerate={setRegenerate}
         />
       )}
     </div>

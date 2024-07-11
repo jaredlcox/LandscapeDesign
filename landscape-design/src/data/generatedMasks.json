@@ -1,0 +1,516 @@
+[
+  {
+    "status": "success",
+    "label": "blue house",
+    "url": "https://images.pexels.com/photos/3935346/pexels-photo-3935346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "data": {
+      "job_id": "66607212a5f9f336a8d6bd25",
+      "job_status": "done",
+      "masks": [
+        {
+          "name": "wall",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/8115c687-c7ee-4ef1-86fc-be79dd12019a_segment.png",
+          "center": {
+            "y": 527,
+            "x": 576
+          },
+          "category": "architectural,landscaping",
+          "area_percent": 0.30802962962962965
+        },
+        {
+          "name": "sky",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/66ce7e8b-c38c-4fe1-b185-c43d3513e30d_segment.png",
+          "center": {
+            "y": 70,
+            "x": 413
+          },
+          "category": "landscaping",
+          "area_percent": 10.145066666666667
+        },
+        {
+          "name": "car",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/9e1fd536-2515-46d8-8048-382f15d5f92a_segment.png",
+          "center": {
+            "y": 465,
+            "x": 1028
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.036503703703703705
+        },
+        {
+          "name": "tree",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/4fe87ea8-6a11-4e45-8d52-fd6022bbc12c_segment.png",
+          "center": {
+            "y": 194,
+            "x": 685
+          },
+          "category": "landscaping",
+          "area_percent": 24.185599999999997
+        },
+        {
+          "name": "house",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/866362ed-3fed-4a52-bfe9-b63c1e4b9c4b_segment.png",
+          "center": {
+            "y": 355,
+            "x": 488
+          },
+          "category": "landscaping",
+          "area_percent": 33.46903703703703
+        },
+        {
+          "name": "grass",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/87f25b5b-7909-4cda-b6c0-c58ca26da567_segment.png",
+          "center": {
+            "y": 643,
+            "x": 760
+          },
+          "category": "landscaping",
+          "area_percent": 18.83034074074074
+        },
+        {
+          "name": "earth",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/c02c754e-d125-4a6a-833b-ece9a90de44a_segment.png",
+          "center": {
+            "y": 641,
+            "x": 194
+          },
+          "category": "landscaping",
+          "area_percent": 9.551407407407407
+        },
+        {
+          "name": "path",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/654ce38b-cd0b-449d-b1a6-064a789b4cc7_segment.png",
+          "center": {
+            "y": 525,
+            "x": 766
+          },
+          "category": "landscaping",
+          "area_percent": 1.658074074074074
+        },
+        {
+          "name": "box",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/fa5b81c5-cec7-4ca4-9fe1-cc119b9ebdaf_segment.png",
+          "center": {
+            "y": 484,
+            "x": 1118
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.08355555555555555
+        },
+        {
+          "name": "plant",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/2c76232b-c4a3-43b0-a6e2-7f60ebc99464_segment.png",
+          "center": {
+            "y": 503,
+            "x": 1085
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.13096296296296295
+        },
+        {
+          "name": "stairs",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/bd29a5f4-cb9c-4502-b297-1ac520e9d452_segment.png",
+          "center": {
+            "y": 516,
+            "x": 338
+          },
+          "category": "furnishing",
+          "area_percent": 0.4203851851851852
+        },
+        {
+          "name": "sconce",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/2194434d-91ea-4bf3-8542-ebde6ea0e6a8_segment.png",
+          "center": {
+            "y": 399,
+            "x": 634
+          },
+          "category": "landscaping",
+          "area_percent": 0.04183703703703704
+        },
+        {
+          "name": "vase",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/5ed41535-634b-46f4-a8f2-0bb32c89a1a5_segment.png",
+          "center": {
+            "y": 505,
+            "x": 525
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.05700740740740741
+        },
+        {
+          "name": "fence",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/d8906cc5-6ee1-439f-96c8-f9ff48beaedf_segment.png",
+          "center": {
+            "y": 422,
+            "x": 1096
+          },
+          "category": "landscaping",
+          "area_percent": 0.25765925925925925
+        },
+        {
+          "name": "railing",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/3c0b0ca9-af71-4d7d-a872-61e4cfdeb5af_segment.png",
+          "center": {
+            "y": 483,
+            "x": 356
+          },
+          "category": "furnishing",
+          "area_percent": 0.27117037037037034
+        },
+        {
+          "name": "ashcan",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/a3d9e040-de8e-4dbc-9a71-27bf22fee47c_segment.png",
+          "center": {
+            "y": 477,
+            "x": 1063
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.2705777777777778
+        },
+        {
+          "name": "signboard",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/26709dea-1fef-4b9e-a2f5-df6d195c17ff_segment.png",
+          "center": {
+            "y": 387,
+            "x": 1094
+          },
+          "category": "landscaping",
+          "area_percent": 0.2805333333333333
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "label": "white house",
+    "url": "https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "data": {
+      "job_id": "666071a3a5f9f336a8d6bc79",
+      "job_status": "done",
+      "masks": [
+        {
+          "name": "tree",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/8932984c-8dae-4330-8c82-e0cd064be330_segment.png",
+          "center": {
+            "y": 135,
+            "x": 468
+          },
+          "category": "landscaping",
+          "area_percent": 27.645155555555554
+        },
+        {
+          "name": "sky",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/78e9a04d-5147-4b8e-9945-e54ffd9a48b9_segment.png",
+          "center": {
+            "y": 87,
+            "x": 938
+          },
+          "category": "landscaping",
+          "area_percent": 6.061866666666667
+        },
+        {
+          "name": "fence",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/2e6f8954-7eff-4ec7-80b1-e26fdff03c66_segment.png",
+          "center": {
+            "y": 365,
+            "x": 87
+          },
+          "category": "landscaping",
+          "area_percent": 1.3199407407407409
+        },
+        {
+          "name": "grass",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/98fce5cc-511e-40fb-bb51-51f655e44a23_segment.png",
+          "center": {
+            "y": 614,
+            "x": 573
+          },
+          "category": "landscaping",
+          "area_percent": 35.56989629629629
+        },
+        {
+          "name": "sidewalk",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/f5b2c99e-4a64-4e9a-95d7-8add3cc77b68_segment.png",
+          "center": {
+            "y": 503,
+            "x": 193
+          },
+          "category": "landscaping",
+          "area_percent": 0.7700148148148148
+        },
+        {
+          "name": "house",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/9a1b6c1b-ffc9-40b8-be07-61650e178c7f_segment.png",
+          "center": {
+            "y": 345,
+            "x": 600
+          },
+          "category": "landscaping",
+          "area_percent": 23.64077037037037
+        },
+        {
+          "name": "earth",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/f992500b-f9f6-4594-b245-ea19a11cbb96_segment.png",
+          "center": {
+            "y": 469,
+            "x": 574
+          },
+          "category": "landscaping",
+          "area_percent": 1.5150222222222223
+        },
+        {
+          "name": "step",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/6ec3e633-77f1-4689-bb63-24a70c45a603_segment.png",
+          "center": {
+            "y": 463,
+            "x": 522
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.3247407407407408
+        },
+        {
+          "name": "pot",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/943e9aae-480f-479b-b234-5563c692da21_segment.png",
+          "center": {
+            "y": 431,
+            "x": 520
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.1348740740740741
+        },
+        {
+          "name": "sconce",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/222ebfc5-e510-46e8-a8b6-1bce76bc3808_segment.png",
+          "center": {
+            "y": 328,
+            "x": 473
+          },
+          "category": "landscaping",
+          "area_percent": 0.027022222222222222
+        },
+        {
+          "name": "path",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/f789ea4f-f627-475e-8343-36f2574a4e48_segment.png",
+          "center": {
+            "y": 485,
+            "x": 344
+          },
+          "category": "landscaping",
+          "area_percent": 0.9244444444444444
+        },
+        {
+          "name": "plant",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/2c0af69e-ffb3-43a6-8624-63ae202d1207_segment.png",
+          "center": {
+            "y": 428,
+            "x": 609
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 2.0645925925925925
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "label": "tan and red house",
+    "url": "https://images.pexels.com/photos/3958961/pexels-photo-3958961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "data": {
+      "job_id": "666071dba5f9f336a8d6bd11",
+      "job_status": "done",
+      "masks": [
+        {
+          "name": "building",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/42580254-436c-4363-93d1-1e64026ecc3f_segment.png",
+          "center": {
+            "y": 372,
+            "x": 1009
+          },
+          "category": "landscaping",
+          "area_percent": 0.5821612349914237
+        },
+        {
+          "name": "sky",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/86278df5-e0e9-4b7c-9718-aa9d9e1a0db2_segment.png",
+          "center": {
+            "y": 71,
+            "x": 294
+          },
+          "category": "landscaping",
+          "area_percent": 3.050314465408805
+        },
+        {
+          "name": "plant",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/8d7c611d-e226-4128-a4a9-316b049138e0_segment.png",
+          "center": {
+            "y": 539,
+            "x": 1089
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 1.0181818181818183
+        },
+        {
+          "name": "grass",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/80dbcb58-5958-4041-b079-9e7e5085275e_segment.png",
+          "center": {
+            "y": 581,
+            "x": 125
+          },
+          "category": "landscaping",
+          "area_percent": 1.3596340766152086
+        },
+        {
+          "name": "house",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/5c7290c9-4bf4-4fc2-aee1-ffe652d56609_segment.png",
+          "center": {
+            "y": 415,
+            "x": 525
+          },
+          "category": "landscaping",
+          "area_percent": 29.84871355060034
+        },
+        {
+          "name": "tree",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/2eba8688-4a03-4b7d-9ba6-bd56065a088e_segment.png",
+          "center": {
+            "y": 226,
+            "x": 633
+          },
+          "category": "landscaping",
+          "area_percent": 44.63236134934248
+        },
+        {
+          "name": "stairs",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/298fad3c-ec5e-41f6-b8da-e0069f712390_segment.png",
+          "center": {
+            "y": 597,
+            "x": 639
+          },
+          "category": "furnishing",
+          "area_percent": 0.8484848484848486
+        },
+        {
+          "name": "sconce",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/44f8eb0b-dea3-4659-9cc0-0841eb9a7e22_segment.png",
+          "center": {
+            "y": 436,
+            "x": 550
+          },
+          "category": "landscaping",
+          "area_percent": 0.01509433962264151
+        },
+        {
+          "name": "path",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/aa2486bb-00d0-4879-bd94-6c0823a7752c_segment.png",
+          "center": {
+            "y": 673,
+            "x": 284
+          },
+          "category": "landscaping",
+          "area_percent": 8.731846769582619
+        },
+        {
+          "name": "ashcan",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/e7dd6113-5d97-4571-adc5-d251982de07a_segment.png",
+          "center": {
+            "y": 583,
+            "x": 1000
+          },
+          "category": "furnishing,landscaping",
+          "area_percent": 0.2338479130931961
+        },
+        {
+          "name": "earth",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/96c266fb-b492-471b-8f5a-8a23f757e381_segment.png",
+          "center": {
+            "y": 683,
+            "x": 853
+          },
+          "category": "landscaping",
+          "area_percent": 9.679359634076615
+        }
+      ]
+    }
+  },
+  {
+    "status": "success",
+    "label": "brown brick house",
+    "url": "https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "data": {
+      "job_id": "668d549a3b864255cb299816",
+      "job_status": "done",
+      "masks": [
+        {
+          "name": "sky",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/7b5c3e64-7843-4d0d-a5f4-3e775378b8f8_segment.png",
+          "center": {
+            "y": 113,
+            "x": 453
+          },
+          "category": "landscaping",
+          "area_percent": 23.320333333333334
+        },
+        {
+          "name": "house",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/a7ab243f-7673-4f1c-8d5c-e8a965970081_segment.png",
+          "center": {
+            "y": 404,
+            "x": 576
+          },
+          "category": "landscaping",
+          "area_percent": 37.83522222222222
+        },
+        {
+          "name": "earth",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/b05c9e30-f066-49bd-935c-1ebca3506859_segment.png",
+          "center": {
+            "y": 670,
+            "x": 815
+          },
+          "category": "landscaping",
+          "area_percent": 13.571222222222223
+        },
+        {
+          "name": "tree",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/65a0d68e-5e8f-45a3-aedf-3055397ca831_segment.png",
+          "center": {
+            "y": 319,
+            "x": 792
+          },
+          "category": "landscaping",
+          "area_percent": 18.77788888888889
+        },
+        {
+          "name": "stairs",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/73c688c6-efdc-495a-923b-852e1df88020_segment.png",
+          "center": {
+            "y": 579,
+            "x": 443
+          },
+          "category": "furnishing",
+          "area_percent": 0.2631111111111111
+        },
+        {
+          "name": "bannister",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/ea2c5748-1f15-478d-a135-ce95d0e053a1_segment.png",
+          "center": {
+            "y": 547,
+            "x": 474
+          },
+          "category": "furnishing",
+          "area_percent": 0.10888888888888888
+        },
+        {
+          "name": "field",
+          "url": "https://cdn.reimaginehome.ai/prod/mask/d26265c7-68de-4095-bde3-4bd236d6f42e_segment.png",
+          "center": {
+            "y": 682,
+            "x": 235
+          },
+          "category": "landscaping",
+          "area_percent": 6.123333333333333
+        }
+      ]
+    }
+  }
+]

@@ -1,7 +1,7 @@
 function getImage(imageId) {
     const url = `https://api.reimaginehome.ai/v1/generate_image/${imageId}`;
     const headers = {
-      'api-key': '65394b877bf27b356047e693'
+      'api-key': '668f34ce9b303a613cea8fbf'
     };
   
     return fetch(url, { method: 'GET', headers: headers })
