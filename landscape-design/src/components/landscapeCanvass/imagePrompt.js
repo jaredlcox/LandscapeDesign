@@ -84,7 +84,10 @@ const ImagePrompt = (props) => {
         checked={props.selectedImage !== null && !props.showLoading}
       />
       <div className="drawer-side mt-[90px] flex flex-col justify-between ">
-        <div className="menu p-4 min-h-full text-base-content flex flex-col justify-between w-auto md:w-80 items-center bg-base-200">
+        <div
+          style={{ scrollbarWidth: "none" }}
+          className="menu p-4 min-h-full text-base-content flex flex-col justify-between w-auto md:w-80 items-center bg-base-200 flex-nowrap overflow-scroll"
+        >
           {/* dropdowns */}
           <div>
             <div className="text-center p-2 bg-cyan-50 rounded text-slate-700 font-medium text-lg tracking-wide">
@@ -155,7 +158,7 @@ const ImagePrompt = (props) => {
           </div>
           {/* description and button */}
           <div className="flex flex-col mb-[110px]">
-            <div className="p-2 bg-cyan-50 rounded text-gray-800 mb-4 text-">
+            <div className="p-2 bg-cyan-50 rounded text-gray-800 mb-4 mt-4 text-">
               Outdoor area identified by AI will be redesigned with suitable
               landscaping features as per inputs chosen.
             </div>
