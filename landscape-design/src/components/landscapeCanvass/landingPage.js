@@ -27,11 +27,12 @@ const LandingPage = () => {
 
       {/* Image content */}
       <div className="flex flex-col max-w-7xl xl:p-10 h-1/2 xl:h-full justify-center w-full">
-        <div className="bg-white h-5/6 xl:h-5/6 w-full rounded-md flex relative">
-          <div className="absolute top-0 left-0 p-2 flex">
-            <div className="h-3 w-3 rounded-full bg-[#E5FCF7]"></div>
-            <div className="ml-2 mr-2 h-3 w-3 rounded-full bg-[#E5FCF7]"></div>
-            <div className="h-3 w-3 rounded-full bg-[#E5FCF7]"></div>
+        <div className="mockup-browser bg-base-300 border h-5/6 xl:h-5/6 w-full">
+          <div className="mockup-browser-toolbar">
+            <div className="input">https://integrityvlc.com</div>
+          </div>
+          <div className="bg-base-200 flex justify-center px-4 py-16 h-full">
+            Add video/slideshow element here
           </div>
         </div>
         <button
