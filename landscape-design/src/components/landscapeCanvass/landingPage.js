@@ -19,7 +19,12 @@ const LandingPage = () => {
             <li>Customize the elements to your liking</li>
             <li>Save your designs and share them with others</li>
           </ul>
-          <button className="hidden sm:flex btn btn-md bg-gradient-to-r from-emerald-400 to-emerald-300 text-white md:btn-md hover:bg-black xl:self-baseline mt-auto">
+          <button
+            onClick={() => {
+              document.getElementById("my_modal_2").showModal();
+            }}
+            className="hidden sm:flex btn btn-md bg-gradient-to-r from-emerald-400 to-emerald-300 text-white md:btn-md hover:bg-black xl:self-baseline mt-auto"
+          >
             Try now for FREE
           </button>
         </div>
@@ -27,10 +32,7 @@ const LandingPage = () => {
 
       {/* Image content */}
       <div className="flex flex-col max-w-7xl xl:p-10 h-1/2 xl:h-full justify-center w-full">
-        <div className="mockup-browser bg-base-300 border h-5/6 xl:h-5/6 w-full">
-          <div className="mockup-browser-toolbar">
-            <div className="input">https://integrityvlc.com</div>
-          </div>
+        <div className="mockup-window bg-base-300 border h-5/6 xl:h-5/6 w-full">
           <div className="bg-base-200 flex justify-center px-4 py-16 h-full">
             Add video/slideshow element here
           </div>
