@@ -10,11 +10,11 @@ import {
 const CanvassTopNavBar = (props) => {
   return (
     <div className="px-8 py-5 flex items-center justify-between border-b-4 border-neutral-100 w-full z-50">
-      <div className="flex md:flex-row text-neutral-600 text-xl font-medium">
+      <div className="flex md:flex-row text-slate-700 text-xl sm:text-3xl font-medium">
         <p>Visu</p>
-        <p className="text-emerald-400 text-xl font-bold">a</p>
+        <p className="text-emerald-400 font-bold">a</p>
         <p>l Des</p>
-        <p className="text-emerald-300 text-xl font-bold">i</p>
+        <p className="text-emerald-300 font-bold">i</p>
         <p>gn</p>
       </div>
 
