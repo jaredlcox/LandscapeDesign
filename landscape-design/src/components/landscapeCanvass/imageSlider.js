@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { ImgComparisonSlider } from "@img-comparison-slider/react";
 
 const ImageSlider = (props) => {
   return (
     <div className="flex h-full justify-center items-center p-0 sm:p-2 bg-slate-100">
       {!props.confirm && (
-        <div className="bg-white p-10 pb-0 rounded-md shadow-none sm:shadow-xl flex flex-col justify-between">
+        <div className="bg-white p-10 pb-0 rounded-md shadow-none sm:shadow-xl flex flex-col justify-between h-[400px] sm:h-[600px]">
           <ImgComparisonSlider>
             <img
               slot="first"
               src={props.selectedImage.src}
-              style={{ width: "100%", height: "100%" }}
+              className="w-full h-full"
             />
             <img
               slot="second"
               src={props.generatedDesign}
-              style={{ width: "100%", height: "100%" }}
+              className="w-full h-[250px] sm:h-[400px] "
             />
           </ImgComparisonSlider>
           <div className="flex justify-between mt-5 mb-5">
@@ -37,12 +37,6 @@ const ImageSlider = (props) => {
               Looks Good
             </button>
           </div>
-        </div>
-      )}
-      {props.confirm && (
-        <div className="flex flex-col justify-center items-center h-full w-full animate-pulse bg-slate-50">
-          <p className="text-emerald-400 text-xl">Adding Image to Canvas</p>
-          <progress className="progress w-56 bg-emerald-400 mt-3"></progress>
         </div>
       )}
     </div>

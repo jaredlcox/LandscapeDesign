@@ -7,6 +7,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the c
 import LandingPage from "./landingPage";
 import ImageSlider from "./imageSlider";
 import GeneratingDesign from "./generatingDesign";
+import AddingImageToCanvas from "./addingImageOnCanvas";
+import SelfDesignCanvas from "./selfDesignCanvas";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,6 +18,7 @@ const LandscapeCanvass = () => {
   const [generatingDesign, setGeneratingDesign] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [regenerate, setRegenerate] = useState(false);
+  const [beginDesigning, setBeginDesigning] = useState(false);
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 
@@ -153,7 +156,15 @@ const LandscapeCanvass = () => {
     }
   }, [generatedDesign]);
 
-  console.log(generatingDesign);
+  useEffect(() => {
+    if (confirm) {
+      // if the confirm is true then the user has confirmed the design
+      setTimeout(() => {
+        setConfirm(false);
+        setBeginDesigning(true);
+      }, 3000);
+    }
+  }, [confirm]);
 
   return (
     <div
@@ -266,17 +277,23 @@ const LandscapeCanvass = () => {
           />
         )}
       {generatingDesign && <GeneratingDesign />}
-      {selectedImage && generatedDesign && !generatingDesign && (
-        <ImageSlider
-          selectedImage={selectedImage}
-          generatedDesign={generatedDesign}
-          confirm={confirm}
-          setConfirm={setConfirm}
-          regenerate={regenerate}
-          setRegenerate={setRegenerate}
-          setGeneratedDesign={setGeneratedDesign}
-        />
-      )}
+      {selectedImage &&
+        generatedDesign &&
+        !generatingDesign &&
+        !confirm &&
+        !beginDesigning && (
+          <ImageSlider
+            selectedImage={selectedImage}
+            generatedDesign={generatedDesign}
+            confirm={confirm}
+            setConfirm={setConfirm}
+            regenerate={regenerate}
+            setRegenerate={setRegenerate}
+            setGeneratedDesign={setGeneratedDesign}
+          />
+        )}
+      {confirm && !beginDesigning && <AddingImageToCanvas />}
+      {!confirm && beginDesigning && <SelfDesignCanvas />}
     </div>
   );
 };
