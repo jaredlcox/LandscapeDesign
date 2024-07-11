@@ -142,7 +142,11 @@ const LandscapeCanvass = () => {
   };
 
   return (
-    <div className={`flex flex-col relative h-screen w-screen ${(showLoading || selectedImage) && 'overflow-hidden'}`}>
+    <div
+      className={`flex flex-col relative h-screen w-screen ${
+        (showLoading || selectedImage) && "overflow-hidden"
+      }`}
+    >
       <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
@@ -177,7 +181,9 @@ const LandscapeCanvass = () => {
         </dialog>
       )}
       <div
-        className={`flex flex-grow relative ${!selectedImage && 'overflow-auto'} ${
+        className={`flex flex-grow relative ${
+          !selectedImage && "overflow-auto"
+        } ${
           selectedImage || changingImage
             ? "bg-white"
             : "bg-gradient-to-r from-teal-50 to-teal-100"
@@ -201,9 +207,9 @@ const LandscapeCanvass = () => {
 
         {/* Loading Indicator */}
         {showLoading && (
-          <div className="flex flex-col justify-center items-center h-full w-full">
-            <span className="loading loading-spinner loading-lg text-emerald-400"></span>
-            <p className="text-emerald-400">Loading...</p>
+          <div className="flex justify-center items-center h-full w-full animate-pulse bg-slate-50">
+              <p className="text-emerald-400 text-xl">Loading</p>
+              <span className="loading loading-dots loading-md text-emerald-400 ml-1 mt-2"></span>
           </div>
         )}
         {!showLoading && selectedImage && (
