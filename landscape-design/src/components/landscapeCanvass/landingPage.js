@@ -10,7 +10,7 @@ const IMAGES = [
 const SlideshowText = ({ currentIndex }) => {
   const text = currentIndex === 0 ? "Original" : "AI Generated";
   return (
-    <div className="top-5 left-6 absolute bg-white p-3 text-emerald-400 font-bold rounded-lg">
+    <div className="top-2 left-3 sm:top-5 sm:left-6 absolute bg-white p-2 sm:p-3 text-emerald-400 font-semibold sm:font-bold rounded-lg">
       {text}
     </div>
   );
