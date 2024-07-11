@@ -155,6 +155,7 @@ const LandscapeCanvass = () => {
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         setChangingImage={setChangingImage}
+        setGeneratedDesign={setGeneratedDesign}
       />
       {!selectedImage && (
         <dialog id="my_modal_2" className="modal">

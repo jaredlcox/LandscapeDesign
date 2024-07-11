@@ -19,14 +19,19 @@ const ImageSlider = (props) => {
             />
           </ImgComparisonSlider>
           <div className="flex justify-between mt-5 mb-5">
-            <button onClick={() => {props.setRegenerate(true)}} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-red-500">
+            <button
+              onClick={() => {
+                props.setRegenerate(true);
+              }}
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-red-500 hover:bg-red-300 text-white"
+            >
               Regenerate
             </button>
             <button
               onClick={() => {
                 props.setConfirm(true);
               }}
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-green-500"
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-green-500 text-white hover:bg-green-300"
             >
               Looks Good
             </button>
