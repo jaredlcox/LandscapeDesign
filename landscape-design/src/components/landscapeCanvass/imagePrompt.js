@@ -11,7 +11,6 @@ const ImagePrompt = (props) => {
   const [designTheme, setDesignTheme] = useState(null);
   const [landscapingPreference, setLandscapingPreference] = useState(null);
   const [additionalPrompt, setAdditionalPrompt] = useState("");
-  const [isGenerated, setIsGenerated] = useState(false);
 
   const exterior_themes = [
     { "DT-EXT-001": "Beautiful garden" },
@@ -59,7 +58,7 @@ const ImagePrompt = (props) => {
       getMaskUntilDone(maskId);
     });
   };
-  
+
   // Define getImageUntilDone function
   const getImageUntilDone = (imageId) => {
     getImage(imageId).then((imageData) => {
@@ -74,9 +73,9 @@ const ImagePrompt = (props) => {
 
   const handleClick = () => {
     // this will be the function that first checks for a generated mask in a database
-    if (!isGenerated) {
+    if (!props.generatingDesign) {
       generateDesign(props.selectedImage.src);
-      setIsGenerated(true); // Prevent further calls until reset
+      props.setGeneratingDesign(true); // Prevent further calls until reset
     }
   };
 
@@ -175,7 +174,11 @@ const ImagePrompt = (props) => {
                   ? "cursor-not-allowed"
                   : "cursor-pointer"
               } btn w-full bg-gradient-to-r from-emerald-300 to-teal-500 text-white tracking-wide text-base`}
-              onClick={handleClick}
+              onClick={() => {
+                if (spaceType && designTheme && landscapingPreference) {
+                  handleClick();
+                }
+              }}
             >
               Generate Design
             </button>

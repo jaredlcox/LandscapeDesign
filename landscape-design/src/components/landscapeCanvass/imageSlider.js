@@ -22,6 +22,7 @@ const ImageSlider = (props) => {
             <button
               onClick={() => {
                 props.setRegenerate(true);
+                props.setGeneratedDesign(null);
               }}
               className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-red-500 hover:bg-red-300 text-white"
             >

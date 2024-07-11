@@ -6,12 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"; // Import the correct icons
 import LandingPage from "./landingPage";
 import ImageSlider from "./imageSlider";
+import GeneratingDesign from "./generatingDesign";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [changingImage, setChangingImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
   const [generatedDesign, setGeneratedDesign] = useState(null);
+  const [generatingDesign, setGeneratingDesign] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [regenerate, setRegenerate] = useState(false);
   const gridRef = useRef(null);
@@ -144,6 +146,15 @@ const LandscapeCanvass = () => {
     );
   };
 
+  useEffect(() => {
+    if (generatedDesign) {
+      // if the generatedDesign is not null then it is done generating
+      setGeneratingDesign(false);
+    }
+  }, [generatedDesign]);
+
+  console.log(generatingDesign);
+
   return (
     <div
       className={`flex flex-col relative h-screen w-screen ${
@@ -156,6 +167,7 @@ const LandscapeCanvass = () => {
         setSelectedImage={setSelectedImage}
         setChangingImage={setChangingImage}
         setGeneratedDesign={setGeneratedDesign}
+        setGeneratingDesign={setGeneratingDesign}
       />
       {!selectedImage && (
         <dialog id="my_modal_2" className="modal">
@@ -185,7 +197,7 @@ const LandscapeCanvass = () => {
           </div>
         </dialog>
       )}
-      {!generatedDesign && (
+      {!generatedDesign && !generatingDesign && (
         <div
           className={`flex flex-grow relative ${
             !selectedImage && "overflow-auto"
@@ -238,17 +250,23 @@ const LandscapeCanvass = () => {
           )}
         </div>
       )}
-      {selectedImage && !showLoading && !generatedDesign && (
-        <ImagePrompt
-          selectedImage={selectedImage}
-          setSelectedImage={setSelectedImage}
-          showLoading={showLoading}
-          setShowLoading={setShowLoading}
-          generatedDesign={generatedDesign}
-          setGeneratedDesign={setGeneratedDesign}
-        />
-      )}
-      {selectedImage && generatedDesign && (
+      {selectedImage &&
+        !showLoading &&
+        !generatedDesign &&
+        !generatingDesign && (
+          <ImagePrompt
+            selectedImage={selectedImage}
+            setSelectedImage={setSelectedImage}
+            showLoading={showLoading}
+            setShowLoading={setShowLoading}
+            generatedDesign={generatedDesign}
+            setGeneratedDesign={setGeneratedDesign}
+            generatingDesign={generatingDesign}
+            setGeneratingDesign={setGeneratingDesign}
+          />
+        )}
+      {generatingDesign && <GeneratingDesign />}
+      {selectedImage && generatedDesign && !generatingDesign && (
         <ImageSlider
           selectedImage={selectedImage}
           generatedDesign={generatedDesign}
@@ -256,6 +274,7 @@ const LandscapeCanvass = () => {
           setConfirm={setConfirm}
           regenerate={regenerate}
           setRegenerate={setRegenerate}
+          setGeneratedDesign={setGeneratedDesign}
         />
       )}
     </div>

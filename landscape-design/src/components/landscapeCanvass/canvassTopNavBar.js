@@ -38,6 +38,7 @@ const CanvassTopNavBar = (props) => {
                     props.setSelectedImage(null);
                     props.setChangingImage(true);
                     props.setGeneratedDesign(null);
+                    props.setGeneratingDesign(false);
                     setTimeout(() => {
                       document.getElementById("my_modal_2").showModal();
                     }, 100);
@@ -52,6 +53,7 @@ const CanvassTopNavBar = (props) => {
                     props.setGeneratedDesign(null);
                     props.setSelectedImage(null);
                     props.setChangingImage(false);
+                    props.setGeneratingDesign(false);
                   }}
                   className={`${
                     !props.selectedImage && "hover:cursor-not-allowed"
