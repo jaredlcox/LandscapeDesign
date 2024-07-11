@@ -38,7 +38,7 @@ const AddBackgroundImageModalContent = (props) => {
           <>
             <h3 className="font-bold text-lg">{image.alt}</h3>
             <img src={image.src} alt={image.alt} className="w-full h-auto" />
-            <div class="flex flex-row justify-between items-center pt-2">
+            <div className="flex flex-row justify-between items-center pt-2">
               <button className="btn bg-red-500 hover:bg-red-400 text-white" onClick={() => {setShowModal(false); props.setSelectedImage(null)}}>
                 <FontAwesomeIcon icon={faXmark} />
                 Cancel
@@ -60,7 +60,7 @@ const AddBackgroundImageModalContent = (props) => {
   const images = [
     {
       id: 1,
-      src: 'https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg',
+      src: 'https://images.pexels.com/photos/3935346/pexels-photo-3935346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       alt: 'House 1',
       description: 'This is house 1'
     },
@@ -78,7 +78,7 @@ const AddBackgroundImageModalContent = (props) => {
     },
     {
       id: 4,
-      src: 'https://images.pexels.com/photos/3935346/pexels-photo-3935346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      src: 'https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg',
       alt: 'House 4',
       description: 'This is house 4'
     },
@@ -89,11 +89,11 @@ const AddBackgroundImageModalContent = (props) => {
       <div className="flex-1 flex flex-col items-center justify-center p-4">
         <p className="text-center max-w-72">Add a picture of the area you want to design or choose from our image library below</p>
         <div className="flex flex-col items-center mt-12 cursor-pointer group" onClick={handleClick}>
-          <button className="btn sm:h-32 sm:w-32 sm:rounded-full bg-blue-400 group-hover:bg-blue-800">
+          <button className="btn sm:h-32 sm:w-32 sm:rounded-full bg-gradient-to-r from-emerald-400 to-emerald-300">
             <FontAwesomeIcon icon={faCloudArrowUp} className="text-3xl text-white" />
             <span className="inline-block sm:hidden text-white">Upload Photo</span>
           </button>
-          <span className="hidden sm:inline-block text-blue-400 group-hover:text-blue-800">Upload Photo</span>
+          <span className="hidden sm:inline-block text-emerald-400 group-hover:text-emerald-800">Upload Photo</span>
           <input
             type="file"
             ref={fileInputRef}
