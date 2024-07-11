@@ -60,7 +60,7 @@ const AddBackgroundImageModalContent = (props) => {
   const images = [
     {
       id: 1,
-      src: 'https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg',
+      src: 'https://images.pexels.com/photos/3935346/pexels-photo-3935346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       alt: 'House 1',
       description: 'This is house 1'
     },
@@ -78,7 +78,7 @@ const AddBackgroundImageModalContent = (props) => {
     },
     {
       id: 4,
-      src: 'https://images.pexels.com/photos/3935346/pexels-photo-3935346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      src: 'https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg',
       alt: 'House 4',
       description: 'This is house 4'
     },
