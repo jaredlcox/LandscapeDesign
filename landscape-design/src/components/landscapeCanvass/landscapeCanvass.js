@@ -12,13 +12,16 @@ import SelfDesignCanvas from "./selfDesignCanvas";
 
 const LandscapeCanvass = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedPlantOptions, setSelectedPlantOptions] = useState([]);
   const [changingImage, setChangingImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-  const [generatedDesign, setGeneratedDesign] = useState(null);
+  const [generatedDesign, setGeneratedDesign] = useState(
+    "https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png"
+  );
   const [generatingDesign, setGeneratingDesign] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [regenerate, setRegenerate] = useState(false);
-  const [beginDesigning, setBeginDesigning] = useState(false);
+  const [beginDesigning, setBeginDesigning] = useState(true); // ! change this back to false when done
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 
@@ -208,7 +211,7 @@ const LandscapeCanvass = () => {
           </div>
         </dialog>
       )}
-      {!generatedDesign && !generatingDesign && (
+      {!generatedDesign && !generatingDesign && !beginDesigning && (
         <div
           className={`flex flex-grow relative ${
             !selectedImage && "overflow-auto"
@@ -293,7 +296,13 @@ const LandscapeCanvass = () => {
           />
         )}
       {confirm && !beginDesigning && <AddingImageToCanvas />}
-      {!confirm && beginDesigning && <SelfDesignCanvas />}
+      {!confirm && beginDesigning && (
+        <SelfDesignCanvas
+          generatedDesign={generatedDesign}
+          selectedPlantOptions={selectedPlantOptions}
+          setSelectedPlantOptions={setSelectedPlantOptions}
+        />
+      )}
     </div>
   );
 };

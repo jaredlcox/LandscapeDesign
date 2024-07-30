@@ -78,7 +78,7 @@ const AddBackgroundImageModalContent = (props) => {
     },
     {
       id: 4,
-      src: 'https://images.pexels.com/photos/8031882/pexels-photo-8031882.jpeg',
+      src: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       alt: 'House 4',
       description: 'This is house 4'
     },
