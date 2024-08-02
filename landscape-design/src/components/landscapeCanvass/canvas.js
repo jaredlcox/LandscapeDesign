@@ -28,27 +28,6 @@ import magnolia from "../../data/plants/perennials/trees/magnolia.png";
 import red_maple from "../../data/plants/perennials/trees/red_maple.png";
 import phlox from "../../data/plants/perennials/plants/phlox.png";
 
-const Plant = (props) => {
-  const handleClick = () => {
-    const selectedPlantOptions = Array.isArray(props.selectedPlantOptions)
-      ? props.selectedPlantOptions
-      : [];
-    const newSelectedPlantOptions = [...selectedPlantOptions, props.image];
-    props.setSelectedPlantOptions(newSelectedPlantOptions);
-    console.log(newSelectedPlantOptions);
-  };
-
-  return (
-    <div
-      onClick={handleClick}
-      className="flex flex-col-reverse items-center justify-center font-semibold cursor-pointer"
-    >
-      {props.name}
-      <img src={props.image} className="h-20 w-auto object-contain" />
-    </div>
-  );
-};
-
 const Canvas = (props) => {
   const canvasRef = useRef(null);
   const fabricCanvasRef = useRef(null);
@@ -79,57 +58,60 @@ const Canvas = (props) => {
     };
   }, []);
 
-  const addSquareToCanvas = () => {
-    const fabricCanvas = fabricCanvasRef.current;
-    const square = new fabric.Rect({
-      left: 100,
-      top: 100,
-      fill: "red",
-      width: 50,
-      height: 50,
-      selectable: true,
-    });
-    fabricCanvas.add(square);
-    fabricCanvas.bringToFront(square); // Bring the square to the front when added
-
-    // Bring the square to the front when selected
-    square.on("selected", () => {
-      fabricCanvas.bringToFront(square);
-    });
-
-    // Bring the square to the front while it is being moved
-    square.on("moving", () => {
-      fabricCanvas.bringToFront(square);
-    });
+  const Plant = (props) => {
+    const handleClick = () => {
+      const selectedPlantOptions = Array.isArray(props.selectedPlantOptions)
+        ? props.selectedPlantOptions
+        : [];
+      const newSelectedPlantOptions = [...selectedPlantOptions, props.image];
+      props.setSelectedPlantOptions(newSelectedPlantOptions);
+    
+      const scaleFactors = {
+        "/static/media/begonia.fed9337419914bd5b5f9.png": 0.02,
+        "/static/media/pennisetum_grass.598c7a1135d9a813c5b1.png": 0.2,
+        "/static/media/daisy.d7e2dbb584e208333fc1.png": 0.2,
+        "/static/media/white_azalea.e4090dfe6926a4f25519.png": 0.2,
+        "/static/media/light_purple_hydrangea.5189a7e4dfd639c3b7f8.png": 0.25,
+        "/static/media/pink_lilac.d54f3db24776254647eb.png": 0.25,
+        "/static/media/purple_lilac.cee9f0badf9ba6b570e5.png": 0.25,
+        "/static/media/lavender.bacd2b77ca2ff096ffce.png": 0.2,
+        "/static/media/pink_rose.0a21fb71a34790d897bb.png": 0.03,
+        "/static/media/dogwood.04f1aee294be7c3ffd19.png": 0.3,
+        "/static/media/fir_tree.cd8bb0cfab408b4ab029.png": 0.4,
+        "/static/media/magnolia.9c6d9f0d7f0c29f74959.png": 0.4,
+        "/static/media/red_maple.5ffb32baa54ed2e6f719.png": 0.4,
+      };
+    
+      let scaleFactor = scaleFactors[props.image] || 0.1;
+    
+      fabric.Image.fromURL(
+        props.image,
+        (myImg) => {
+          myImg.set({
+            left: 100,
+            top: 100,
+            scaleX: scaleFactor,
+            scaleY: scaleFactor,
+          });
+          fabricCanvasRef.current.add(myImg);
+        },
+        {
+          crossOrigin: "anonymous",
+        }
+      );
+    };    return (
+      <div
+        onClick={handleClick}
+        className="flex flex-col-reverse items-center justify-center font-semibold cursor-pointer"
+      >
+        {props.name}
+        <img src={props.image} className="h-20 w-auto object-contain" />
+      </div>
+    );
   };
-
-  const addCircleToCanvas = () => {
-    const fabricCanvas = fabricCanvasRef.current;
-    const circle = new fabric.Circle({
-      left: 150,
-      top: 150,
-      fill: "blue",
-      radius: 30,
-      selectable: true,
-    });
-    fabricCanvas.add(circle);
-    fabricCanvas.bringToFront(circle); // Bring the circle to the front when added
-
-    // Bring the circle to the front when selected
-    circle.on("selected", () => {
-      fabricCanvas.bringToFront(circle);
-    });
-
-    // Bring the circle to the front while it is being moved
-    circle.on("moving", () => {
-      fabricCanvas.bringToFront(circle);
-    });
-  };
-
-  const displayPlants = () => {};
 
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-open drawer-end">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Page content here */}
