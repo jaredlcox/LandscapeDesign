@@ -31,7 +31,7 @@ import phlox from "../../data/plants/perennials/plants/phlox.png";
 const Canvas = (props) => {
   const canvasRef = useRef(null);
   const fabricCanvasRef = useRef(null);
-  const imageRef = useRef(null); // Define imageRef
+  const imageRef = useRef(null);
 
   useEffect(() => {
     const canvasElement = canvasRef.current;
@@ -42,7 +42,7 @@ const Canvas = (props) => {
     const resizeCanvas = () => {
       fabricCanvas.setWidth(window.innerWidth);
       fabricCanvas.setHeight(window.innerHeight);
-      fabricCanvas.calcOffset(); // Recalculate the canvas offset
+      fabricCanvas.calcOffset();
     };
 
     // Initial resize
@@ -58,6 +58,31 @@ const Canvas = (props) => {
     };
   }, []);
 
+  const deleteIcon = "https://cdn-icons-png.flaticon.com/512/1828/1828843.png"; // URL for the delete icon
+
+  const addDeleteControl = (fabricObject) => {
+    fabricObject.controls.deleteControl = new fabric.Control({
+      x: 0.5,
+      y: -0.5,
+      offsetX: 8,
+      offsetY: -8,
+      cursorStyle: "pointer",
+      mouseUpHandler: (event, transform) => {
+        const target = transform.target;
+        fabricCanvasRef.current.remove(target);
+        fabricCanvasRef.current.requestRenderAll();
+      },
+      render: (ctx, left, top, styleOverride, fabricObject) => {
+        const img = new Image();
+        img.src = deleteIcon;
+        img.onload = () => {
+          ctx.drawImage(img, left - 8, top - 8, 16, 16); // Smaller icon size
+        };
+      },
+      cornerSize: 12, // Smaller corner size
+    });
+  };
+
   const Plant = (props) => {
     const handleClick = () => {
       const selectedPlantOptions = Array.isArray(props.selectedPlantOptions)
@@ -65,7 +90,7 @@ const Canvas = (props) => {
         : [];
       const newSelectedPlantOptions = [...selectedPlantOptions, props.image];
       props.setSelectedPlantOptions(newSelectedPlantOptions);
-    
+
       const scaleFactors = {
         "/static/media/begonia.fed9337419914bd5b5f9.png": 0.02,
         "/static/media/pennisetum_grass.598c7a1135d9a813c5b1.png": 0.2,
@@ -81,9 +106,9 @@ const Canvas = (props) => {
         "/static/media/magnolia.9c6d9f0d7f0c29f74959.png": 0.4,
         "/static/media/red_maple.5ffb32baa54ed2e6f719.png": 0.4,
       };
-    
+
       let scaleFactor = scaleFactors[props.image] || 0.1;
-    
+
       fabric.Image.fromURL(
         props.image,
         (myImg) => {
@@ -92,14 +117,24 @@ const Canvas = (props) => {
             top: 100,
             scaleX: scaleFactor,
             scaleY: scaleFactor,
+            cornerSize: 5,
+            hasBorders: true,
+            hasControls: true,
+            borderColor: "blue",
+            cornerColor: "blue",
+            cornerStyle: "circle",
+            transparentCorners: false,
           });
+          addDeleteControl(myImg); // Add the delete control
           fabricCanvasRef.current.add(myImg);
         },
         {
           crossOrigin: "anonymous",
         }
       );
-    };    return (
+    };
+
+    return (
       <div
         onClick={handleClick}
         className="flex flex-col-reverse items-center justify-center font-semibold cursor-pointer"
