@@ -366,74 +366,20 @@ const Canvas = (props) => {
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Boxwood"
-                image={boxwood}
+                name="Azalea"
+                image={white_azalea}
               />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Dogwood"
-                image={dogwood}
-              />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Holly"
-                image={holly}
-              />
-
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
                 name="Begonia"
                 image={begonia}
               />
-
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Geranium"
-                image={geranium}
-              />
-              <Plant
-                name="Impatiens"
-                image={impatiens}
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-              />
-
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Ornamental Grass"
-                image={actuiflora_grass}
-              />
-
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Pennisetum Grass"
-                image={pennisetum_grass}
-              />
-
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Petunia"
-                image={petunia}
-              />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Azalea"
-                image={white_azalea}
-              />
-
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Daylily"
-                image={pink_daylily}
+                name="Boxwood"
+                image={boxwood}
               />
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
@@ -444,8 +390,44 @@ const Canvas = (props) => {
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Daylily"
+                image={pink_daylily}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Dogwood"
+                image={dogwood}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Fir Tree"
+                image={fir_tree}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Geranium"
+                image={geranium}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Holly"
+                image={holly}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
                 name="Hydrangea"
                 image={purple_hydrangea}
+              />
+              <Plant
+                name="Impatiens"
+                image={impatiens}
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
               />
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
@@ -468,8 +450,32 @@ const Canvas = (props) => {
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Magnolia"
+                image={magnolia}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Ornamental Grass"
+                image={actuiflora_grass}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
                 name="Oriental Lily"
                 image={oriental_lily}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Pennisetum Grass"
+                image={pennisetum_grass}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Petunia"
+                image={petunia}
               />
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
@@ -480,26 +486,14 @@ const Canvas = (props) => {
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Rose"
-                image={pink_rose}
-              />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Fir Tree"
-                image={fir_tree}
-              />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
-                name="Magnolia"
-                image={magnolia}
-              />
-              <Plant
-                selectedPlantOptions={props.selectedPlantOptions}
-                setSelectedPlantOptions={props.setSelectedPlantOptions}
                 name="Red Maple"
                 image={red_maple}
+              />
+              <Plant
+                selectedPlantOptions={props.selectedPlantOptions}
+                setSelectedPlantOptions={props.setSelectedPlantOptions}
+                name="Rose"
+                image={pink_rose}
               />
             </div>
           </div>
