@@ -20,7 +20,7 @@ const LandscapeCanvass = () => {
   const [generatingDesign, setGeneratingDesign] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [regenerate, setRegenerate] = useState(false);
-  const [beginDesigning, setBeginDesigning] = useState(false); // ! change this back to false when done
+  const [beginDesigning, setBeginDesigning] = useState(false);
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 

@@ -125,60 +125,80 @@ const SelfDesignCanvas = (props) => {
     });
   };
 
-  const saveCanvas = () => {
-    const fabricCanvas = fabricCanvasRef.current;
-    const backgroundImage = backgroundImageRef.current;
+  useEffect(() => {
+    const saveCanvas = () => {
+      const fabricCanvas = fabricCanvasRef.current;
+      const backgroundImage = backgroundImageRef.current;
 
-    if (!backgroundImage) return;
+      if (!backgroundImage) return;
 
-    const { width, height } = backgroundImage;
+      const { width, height } = backgroundImage;
 
-    // Create a temporary canvas with the dimensions of the background image
-    const tempCanvas = new fabric.Canvas(null, {
-      width: width,
-      height: height,
-    });
+      // Create a temporary canvas with the dimensions of the background image
+      const tempCanvas = new fabric.Canvas(null, {
+        width: width,
+        height: height,
+      });
 
-    // Add the background image
-    tempCanvas.setBackgroundImage(
-      backgroundImage,
-      tempCanvas.renderAll.bind(tempCanvas),
-      {
-        scaleX: 1,
-        scaleY: 1,
+      // Add the background image
+      tempCanvas.setBackgroundImage(
+        backgroundImage,
+        tempCanvas.renderAll.bind(tempCanvas),
+        {
+          scaleX: 1,
+          scaleY: 1,
+        }
+      );
+
+      // Clone all other objects and add them to the temporary canvas
+      fabricCanvas.getObjects().forEach((obj) => {
+        if (obj !== backgroundImage) {
+          const clone = fabric.util.object.clone(obj);
+          clone.scaleX /= fabricCanvas.width / width;
+          clone.scaleY /= fabricCanvas.height / height;
+          clone.left /= fabricCanvas.width / width;
+          clone.top /= fabricCanvas.height / height;
+          tempCanvas.add(clone);
+        }
+      });
+
+      // Render the temporary canvas
+      tempCanvas.renderAll();
+
+      // Save canvas as data URL
+      const dataURL = tempCanvas.toDataURL({
+        format: "png",
+        quality: 1,
+      });
+
+      // Download the image
+      const link = document.createElement("a");
+      link.href = dataURL;
+      link.download = "canvas.png";
+      link.click();
+
+      // Clean up temporary canvas
+      tempCanvas.dispose();
+    };
+
+    // Select the download icon
+    const downloadIcon = document.querySelector(".svg-inline--fa.fa-download");
+
+    if (downloadIcon) {
+      // Remove any existing event listeners
+      downloadIcon.removeEventListener("click", saveCanvas);
+
+      // Add event listener to the download icon
+      downloadIcon.addEventListener("click", saveCanvas);
+    }
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      if (downloadIcon) {
+        downloadIcon.removeEventListener("click", saveCanvas);
       }
-    );
-
-    // Clone all other objects and add them to the temporary canvas
-    fabricCanvas.getObjects().forEach((obj) => {
-      if (obj !== backgroundImage) {
-        const clone = fabric.util.object.clone(obj);
-        clone.scaleX /= fabricCanvas.width / width;
-        clone.scaleY /= fabricCanvas.height / height;
-        clone.left /= fabricCanvas.width / width;
-        clone.top /= fabricCanvas.height / height;
-        tempCanvas.add(clone);
-      }
-    });
-
-    // Render the temporary canvas
-    tempCanvas.renderAll();
-
-    // Save canvas as data URL
-    const dataURL = tempCanvas.toDataURL({
-      format: "png",
-      quality: 1,
-    });
-
-    // Download the image
-    const link = document.createElement("a");
-    link.href = dataURL;
-    link.download = "canvas.png";
-    link.click();
-
-    // Clean up temporary canvas
-    tempCanvas.dispose();
-  };
+    };
+  }, []);
 
   const Plant = (props) => {
     const handleClick = () => {
@@ -264,13 +284,6 @@ const SelfDesignCanvas = (props) => {
       </div>
       <div className="drawer-side" style={{ zIndex: 4, position: "relative" }}>
         <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-10 text-center">
-          <button
-            onClick={saveCanvas}
-            className="btn btn-secondary bg-gradient-to-r from-emerald-400 to-emerald-300 border-none"
-            style={{ zIndex: 3 }}
-          >
-            Save Design
-          </button>
           {/* Sidebar content here */}
           <div className="collapse bg-neutral-200">
             <input type="checkbox" />

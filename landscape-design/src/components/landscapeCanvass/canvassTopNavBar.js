@@ -20,7 +20,12 @@ const CanvassTopNavBar = (props) => {
       </div>
 
       <div className="ml-auto flex items-center space-x-8 md:space-x-4 lg:space-x-10">
-        {props.generatedDesign && <FontAwesomeIcon icon={faDownload} />}
+        {props.generatedDesign && (
+          <FontAwesomeIcon
+            icon={faDownload}
+            className="text-3xl text-emerald-400 cursor-pointer"
+          />
+        )}
         {props.selectedImage && !props.generatedDesign && (
           <div className="dropdown dropdown-bottom dropdown-end">
             <div
@@ -71,7 +76,7 @@ const CanvassTopNavBar = (props) => {
           icon={faArrowUpFromBracket}
           className="text-emerald-400 text-2xl cursor-pointer"
         /> */}
-        {!props.selectedImage && (
+        {!props.selectedImage && !props.generatedDesign && (
           <>
             <button
               className="btn btn-md bg-gradient-to-r from-emerald-400 to-teal-300 text-white md:btn-md hidden md:flex hover:bg-black"
