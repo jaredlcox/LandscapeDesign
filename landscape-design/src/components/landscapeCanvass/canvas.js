@@ -28,10 +28,12 @@ import magnolia from "../../data/plants/perennials/trees/magnolia.png";
 import red_maple from "../../data/plants/perennials/trees/red_maple.png";
 import phlox from "../../data/plants/perennials/plants/phlox.png";
 
+const drawerWidth = 320; // Assuming drawer width is 320px
+
 const Canvas = (props) => {
   const canvasRef = useRef(null);
   const fabricCanvasRef = useRef(null);
-  const imageRef = useRef(null);
+  const backgroundImageRef = useRef(null);
 
   useEffect(() => {
     const canvasElement = canvasRef.current;
@@ -40,9 +42,22 @@ const Canvas = (props) => {
 
     // Resize the canvas to match the viewport dimensions
     const resizeCanvas = () => {
-      fabricCanvas.setWidth(window.innerWidth);
-      fabricCanvas.setHeight(window.innerHeight);
+      const canvasWidth = window.innerWidth - drawerWidth;
+      const canvasHeight = window.innerHeight;
+      fabricCanvas.setWidth(canvasWidth);
+      fabricCanvas.setHeight(canvasHeight);
       fabricCanvas.calcOffset();
+
+      if (backgroundImageRef.current) {
+        fabricCanvas.setBackgroundImage(
+          backgroundImageRef.current,
+          fabricCanvas.renderAll.bind(fabricCanvas),
+          {
+            scaleX: canvasWidth / backgroundImageRef.current.width,
+            scaleY: canvasHeight / backgroundImageRef.current.height,
+          }
+        );
+      }
     };
 
     // Initial resize
@@ -56,6 +71,33 @@ const Canvas = (props) => {
       window.removeEventListener("resize", resizeCanvas);
       fabricCanvas.dispose();
     };
+  }, []);
+
+  useEffect(() => {
+    // Add background image
+    const backgroundImageUrl =
+      "https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png";
+    fabric.Image.fromURL(
+      backgroundImageUrl,
+      (img) => {
+        img.set({
+          selectable: false,
+          evented: false,
+        });
+        backgroundImageRef.current = img;
+        const canvasWidth = fabricCanvasRef.current.width;
+        const canvasHeight = fabricCanvasRef.current.height;
+        fabricCanvasRef.current.setBackgroundImage(
+          img,
+          fabricCanvasRef.current.renderAll.bind(fabricCanvasRef.current),
+          {
+            scaleX: canvasWidth / img.width,
+            scaleY: canvasHeight / img.height,
+          }
+        );
+      },
+      { crossOrigin: "anonymous" }
+    );
   }, []);
 
   const deleteIcon = "https://cdn-icons-png.flaticon.com/512/1828/1828843.png"; // URL for the delete icon
@@ -81,6 +123,61 @@ const Canvas = (props) => {
       },
       cornerSize: 12, // Smaller corner size
     });
+  };
+
+  const saveCanvas = () => {
+    const fabricCanvas = fabricCanvasRef.current;
+    const backgroundImage = backgroundImageRef.current;
+
+    if (!backgroundImage) return;
+
+    const { width, height } = backgroundImage;
+
+    // Create a temporary canvas with the dimensions of the background image
+    const tempCanvas = new fabric.Canvas(null, {
+      width: width,
+      height: height,
+    });
+
+    // Add the background image
+    tempCanvas.setBackgroundImage(
+      backgroundImage,
+      tempCanvas.renderAll.bind(tempCanvas),
+      {
+        scaleX: 1,
+        scaleY: 1,
+      }
+    );
+
+    // Clone all other objects and add them to the temporary canvas
+    fabricCanvas.getObjects().forEach((obj) => {
+      if (obj !== backgroundImage) {
+        const clone = fabric.util.object.clone(obj);
+        clone.scaleX /= fabricCanvas.width / width;
+        clone.scaleY /= fabricCanvas.height / height;
+        clone.left /= fabricCanvas.width / width;
+        clone.top /= fabricCanvas.height / height;
+        tempCanvas.add(clone);
+      }
+    });
+
+    // Render the temporary canvas
+    tempCanvas.renderAll();
+
+    // Save canvas as data URL
+    const dataURL = tempCanvas.toDataURL({
+      format: "png",
+      quality: 1,
+    });
+
+    // Download the image
+    const link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "canvas.png";
+    link.click();
+
+    // Clean up temporary canvas
+    tempCanvas.dispose();
   };
 
   const Plant = (props) => {
@@ -151,18 +248,6 @@ const Canvas = (props) => {
       <div className="drawer-content">
         {/* Page content here */}
         <div className="h-screen w-screen relative">
-          <div
-            className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
-            style={{ zIndex: 1 }}
-          >
-            <img
-              ref={imageRef} // Attach the ref to the image element
-              src="https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png"
-              alt="Generated Design"
-              className="object-contain"
-              style={{ maxWidth: "75%", maxHeight: "75%" }}
-            />
-          </div>
           <canvas
             ref={canvasRef}
             className="h-full w-full absolute top-0 left-0"
@@ -179,9 +264,17 @@ const Canvas = (props) => {
       </div>
       <div className="drawer-side" style={{ zIndex: 4, position: "relative" }}>
         <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-10 text-center">
+          <button
+            onClick={saveCanvas}
+            className="btn btn-secondary bg-gradient-to-r from-emerald-400 to-emerald-300 border-none"
+            style={{ zIndex: 3 }}
+          >
+            Save Design
+          </button>
           {/* Sidebar content here */}
           <div className="collapse bg-neutral-200">
             <input type="checkbox" />
+
             <div className="collapse-title text-xl font-medium">Annuals</div>
             <div className="collapse-content flex space-x-4 overflow-x-auto whitespace-nowrap justify-between">
               <Plant
@@ -190,7 +283,6 @@ const Canvas = (props) => {
                 name="Begonia"
                 image={begonia}
               />
-
               <Plant
                 name="Impatiens"
                 image={impatiens}
@@ -223,7 +315,6 @@ const Canvas = (props) => {
                 name="Ornamental Grass"
                 image={actuiflora_grass}
               />
-
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}
@@ -242,7 +333,6 @@ const Canvas = (props) => {
                 name="Azalea"
                 image={white_azalea}
               />
-
               <Plant
                 selectedPlantOptions={props.selectedPlantOptions}
                 setSelectedPlantOptions={props.setSelectedPlantOptions}

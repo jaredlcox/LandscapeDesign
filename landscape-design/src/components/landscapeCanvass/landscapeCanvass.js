@@ -175,14 +175,13 @@ const LandscapeCanvass = () => {
       className={`flex flex-col relative h-screen w-screen`}
       style={{ scrollbarWidth: "none" }}
     >
-      {/* I have this commented out because when it isn't commented out the plant sidebar is fully scrollable for some reaason */}
-      {/* <CanvassTopNavBar
+      <CanvassTopNavBar
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         setChangingImage={setChangingImage}
         setGeneratedDesign={setGeneratedDesign}
         setGeneratingDesign={setGeneratingDesign}
-      /> */}
+      />
       {!selectedImage && (
         <dialog id="my_modal_2" className="modal">
           <div className="modal-box flex flex-col p-0 h-screen w-screen max-h-screen max-w-full rounded-none sm:rounded-lg sm:h-5/6 sm:w-[450px]">
@@ -297,16 +296,16 @@ const LandscapeCanvass = () => {
         )}
       {confirm && !beginDesigning && <AddingImageToCanvas />}
       {!confirm && beginDesigning && (
-        // <SelfDesignCanvas
-        // generatedDesign={generatedDesign}
-        // selectedPlantOptions={selectedPlantOptions}
-        // setSelectedPlantOptions={setSelectedPlantOptions}
-        // />
-        <Canvas
-          generatedDesign={generatedDesign}
-          selectedPlantOptions={selectedPlantOptions}
-          setSelectedPlantOptions={setSelectedPlantOptions}
+        <SelfDesignCanvas
+        generatedDesign={generatedDesign}
+        selectedPlantOptions={selectedPlantOptions}
+        setSelectedPlantOptions={setSelectedPlantOptions}
         />
+        // <Canvas
+        //   generatedDesign={generatedDesign}
+        //   selectedPlantOptions={selectedPlantOptions}
+        //   setSelectedPlantOptions={setSelectedPlantOptions}
+        // />
       )}
     </div>
   );
