@@ -5,6 +5,7 @@ import {
   faArrowUpFromBracket,
   faXmark,
   faCameraRetro,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons"; // Import the correct icons
 
 const CanvassTopNavBar = (props) => {
@@ -19,7 +20,8 @@ const CanvassTopNavBar = (props) => {
       </div>
 
       <div className="ml-auto flex items-center space-x-8 md:space-x-4 lg:space-x-10">
-        {props.selectedImage && (
+        {props.generatedDesign && <FontAwesomeIcon icon={faDownload} />}
+        {props.selectedImage && !props.generatedDesign && (
           <div className="dropdown dropdown-bottom dropdown-end">
             <div
               tabIndex="0"

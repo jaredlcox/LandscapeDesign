@@ -16,13 +16,11 @@ const LandscapeCanvass = () => {
   const [selectedPlantOptions, setSelectedPlantOptions] = useState([]);
   const [changingImage, setChangingImage] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-  const [generatedDesign, setGeneratedDesign] = useState(
-    "https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png"
-  );
+  const [generatedDesign, setGeneratedDesign] = useState(null);
   const [generatingDesign, setGeneratingDesign] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [regenerate, setRegenerate] = useState(false);
-  const [beginDesigning, setBeginDesigning] = useState(true); // ! change this back to false when done
+  const [beginDesigning, setBeginDesigning] = useState(false); // ! change this back to false when done
   const gridRef = useRef(null);
   const contentsRef = useRef(null);
 
@@ -179,6 +177,7 @@ const LandscapeCanvass = () => {
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         setChangingImage={setChangingImage}
+        generatedDesign={generatedDesign}
         setGeneratedDesign={setGeneratedDesign}
         setGeneratingDesign={setGeneratingDesign}
       />
@@ -297,9 +296,9 @@ const LandscapeCanvass = () => {
       {confirm && !beginDesigning && <AddingImageToCanvas />}
       {!confirm && beginDesigning && (
         <SelfDesignCanvas
-        generatedDesign={generatedDesign}
-        selectedPlantOptions={selectedPlantOptions}
-        setSelectedPlantOptions={setSelectedPlantOptions}
+          generatedDesign={generatedDesign}
+          selectedPlantOptions={selectedPlantOptions}
+          setSelectedPlantOptions={setSelectedPlantOptions}
         />
         // <Canvas
         //   generatedDesign={generatedDesign}
