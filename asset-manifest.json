@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/LandscapeDesign/static/css/main.87998926.css",
+    "main.js": "/LandscapeDesign/static/js/main.e5b20f25.js",
+    "static/js/453.f4492b75.chunk.js": "/LandscapeDesign/static/js/453.f4492b75.chunk.js",
+    "static/media/pink_rose.png": "/LandscapeDesign/static/media/pink_rose.0a21fb71a34790d897bb.png",
+    "static/media/begonia.png": "/LandscapeDesign/static/media/begonia.fed9337419914bd5b5f9.png",
+    "static/media/pink_daylily.png": "/LandscapeDesign/static/media/pink_daylily.3ccea439bc4d15605071.png",
+    "static/media/holly.png": "/LandscapeDesign/static/media/holly.5d4a2b46b57abda88f41.png",
+    "static/media/purple_lilac.png": "/LandscapeDesign/static/media/purple_lilac.cee9f0badf9ba6b570e5.png",
+    "static/media/light_purple_hydrangea.png": "/LandscapeDesign/static/media/light_purple_hydrangea.5189a7e4dfd639c3b7f8.png",
+    "static/media/pink_lilac.png": "/LandscapeDesign/static/media/pink_lilac.d54f3db24776254647eb.png",
+    "static/media/arborvitae.png": "/LandscapeDesign/static/media/arborvitae.386261c4d9131dccb0e1.png",
+    "static/media/actuiflora_grass.png": "/LandscapeDesign/static/media/actuiflora_grass.f857cd43223667c5ef6f.png",
+    "static/media/geranium.png": "/LandscapeDesign/static/media/geranium.d671d4fd3c08f6a50f01.png",
+    "static/media/white_azalea.png": "/LandscapeDesign/static/media/white_azalea.e4090dfe6926a4f25519.png",
+    "static/media/impatiens.png": "/LandscapeDesign/static/media/impatiens.7d9c2a0344c54eb7ac0d.png",
+    "static/media/boxwood.png": "/LandscapeDesign/static/media/boxwood.760ff56db720260dcdfe.png",
+    "static/media/petunia.png": "/LandscapeDesign/static/media/petunia.e2e7f23f42acf3a2349a.png",
+    "static/media/oriental_lily.png": "/LandscapeDesign/static/media/oriental_lily.4bd6c9b7642f1833d779.png",
+    "static/media/pennisetum_grass.png": "/LandscapeDesign/static/media/pennisetum_grass.598c7a1135d9a813c5b1.png",
+    "static/media/dogwood.png": "/LandscapeDesign/static/media/dogwood.04f1aee294be7c3ffd19.png",
+    "static/media/lavender.png": "/LandscapeDesign/static/media/lavender.bacd2b77ca2ff096ffce.png",
+    "static/media/red_maple.png": "/LandscapeDesign/static/media/red_maple.5ffb32baa54ed2e6f719.png",
+    "static/media/magnolia.png": "/LandscapeDesign/static/media/magnolia.9c6d9f0d7f0c29f74959.png",
+    "static/media/phlox.png": "/LandscapeDesign/static/media/phlox.006542357f5d75a827b4.png",
+    "static/media/fir_tree.png": "/LandscapeDesign/static/media/fir_tree.cd8bb0cfab408b4ab029.png",
+    "static/media/daisy.png": "/LandscapeDesign/static/media/daisy.d7e2dbb584e208333fc1.png",
+    "index.html": "/LandscapeDesign/index.html",
+    "main.87998926.css.map": "/LandscapeDesign/static/css/main.87998926.css.map",
+    "main.e5b20f25.js.map": "/LandscapeDesign/static/js/main.e5b20f25.js.map",
+    "453.f4492b75.chunk.js.map": "/LandscapeDesign/static/js/453.f4492b75.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.87998926.css",
+    "static/js/main.e5b20f25.js"
+  ]
+}
