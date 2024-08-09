@@ -75,8 +75,7 @@ const SelfDesignCanvas = (props) => {
 
   useEffect(() => {
     // Add background image
-    const backgroundImageUrl =
-      "https://cdn.reimaginehome.ai/prod/gen/824ff19c-62e5-4f38-bcb6-d1fba1179342.png";
+    const backgroundImageUrl = props.generatedDesign;
     fabric.Image.fromURL(
       backgroundImageUrl,
       (img) => {
